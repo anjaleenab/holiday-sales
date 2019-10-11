@@ -15,11 +15,7 @@ if(!empty($_GET["id"]) && !is_numeric($_GET["id"])){
   throw new Exception("Id must be an Integer");
 }
 
-// SELECT p.ID, p.Name, p.Price, p.ShortDescription, GROUP_CONCAT(i.imageURL) AS URL FROM Products AS p JOIN IMAGES AS i ON p.ID = i.ProductID WHERE p.ID = 1 GROUP BY p.ID
-
 startup();
-
-$query = $whereClause;
 
 $result= mysqli_query($conn, $query);
 
@@ -36,7 +32,6 @@ $output = [];
 while ($row = mysqli_fetch_assoc($result)){
   $row["URL"] = explode(',', $row["URL"]);
   $output[] = $row;
-
   }
 
 $encodedJson = json_encode($output);

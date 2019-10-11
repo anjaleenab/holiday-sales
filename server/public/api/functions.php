@@ -2,7 +2,7 @@
 
 function error_handler($error) {
 $output = [
-  "status code"=> http_response_code(),
+  "status code"=> http_response_code(500),
   "success" => "false",
   "error" => $error->getMessage(),
 ];
