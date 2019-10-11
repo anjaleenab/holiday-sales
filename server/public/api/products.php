@@ -6,9 +6,9 @@ set_exception_handler('error_handler');
 require_once('db_connection.php');
 
 if (!empty($_GET["id"])) {
-   $whereClause = "SELECT p.ID, p.Name, p.Price, p.ShortDescription, GROUP_CONCAT(i.imageURL) AS URL FROM Products AS p JOIN IMAGES AS i ON p.ID = i.ProductID WHERE p.ID = " . $_GET["id"] . " GROUP BY p.ID";
+   $query = "SELECT p.ID, p.Name, p.Price, p.ShortDescription, GROUP_CONCAT(i.imageURL) AS URL FROM Products AS p JOIN IMAGES AS i ON p.ID = i.ProductID WHERE p.ID = " . $_GET["id"] . " GROUP BY p.ID";
 } else if(empty($_GET["id"])) {
-  $whereClause = "SELECT * FROM `Products`";
+  $query = "SELECT * FROM `Products`";
 }
 
 if(!empty($_GET["id"]) && !is_numeric($_GET["id"])){
@@ -32,7 +32,7 @@ $output = [];
 while ($row = mysqli_fetch_assoc($result)){
   $row["URL"] = explode(',', $row["URL"]);
   $output[] = $row;
-  }
+}
 
 $encodedJson = json_encode($output);
 print $encodedJson;
