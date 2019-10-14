@@ -13,15 +13,15 @@ class ProductDetails extends React.Component {
       .then(productInView => this.setState({ product: productInView }));
   }
   render() {
-    if (this.state.product) {
-      return (
-        <div></div>
-      );
-    } else {
-      return (
-        null
-      );
-    }
-
+    // if (this.state.product) {
+    //   return (
+    //     <div></div>
+    //   );
+    // } else {
+    return (
+      null
+    );
+    // }
   }
+
 }

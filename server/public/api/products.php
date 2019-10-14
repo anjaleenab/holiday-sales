@@ -6,7 +6,7 @@ set_exception_handler('error_handler');
 require_once('db_connection.php');
 
 if (!empty($_GET["id"])) {
-   $query = "SELECT p.ID, p.Name, p.Price, p.ShortDescription, GROUP_CONCAT(i.imageURL) AS URL FROM Products AS p JOIN IMAGES AS i ON p.ID = i.ProductID WHERE p.ID = " . $_GET["id"] . " GROUP BY p.ID";
+   $query = "SELECT p.ID, p.Name, p.Price, p.ShortDescription, GROUP_CONCAT(i.imageURL) AS Image FROM Products AS p JOIN IMAGES AS i ON p.ID = i.ProductID WHERE p.ID = " . $_GET["id"] . " GROUP BY p.ID";
 } else if(empty($_GET["id"])) {
   $query = "SELECT * FROM `Products`";
 }
@@ -30,7 +30,7 @@ if(!mysqli_num_rows($result)){
 $output = [];
 
 while ($row = mysqli_fetch_assoc($result)){
-  $row["URL"] = explode(',', $row["URL"]);
+  $row["Image"] = explode(',', $row["Image"]);
   $output[] = $row;
 }
 
