@@ -11,8 +11,6 @@ class ProductList extends React.Component {
   getProducts() {
     fetch('/api/products.php')
       .then(data => data.json())
-      // .then(response => console.log(response))
-      // .then(response => console.log(response[0]['Image'][0]))
       .then(productsList => this.setState({ products: productsList }));
 
   }
@@ -21,9 +19,27 @@ class ProductList extends React.Component {
 
   }
   render() {
-    return <div className="grid-container">
-      <ProductListItem items={this.state.products} />
-    </div>;
+    return (
+      <div className="grid-container">
+        {this.state.products.map(item => {
+          var itemImage = item['Image'][0];
+          var price = item['Price'];
+          var id = item['ID'];
+          var description = item['ShortDescription'];
+          var style = {
+            backgroundImage: 'url(' + itemImage + ')',
+            width: 200 + 'px',
+            height: 200 + 'px',
+            backgroundSize: 'contain',
+            backgroundRepeat: 'no-repeat'
+          };
+          return (
+            <ProductListItem key={id} items={this.state.products} style={style}
+              price={price} description = {description} />
+          );
+        })}
+      </div>
+    );
   }
 }
 
