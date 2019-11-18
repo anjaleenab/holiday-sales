@@ -15,7 +15,7 @@ function ProductListItem(props) {
         backgroundRepeat: 'no-repeat'
       };
       return (
-        <div key={id} onClick ={ () => props.viewSetter(id)} >
+        <div key={id} onClick ={ () => props.viewSetter('details', id)} >
           <div style={style} >
           </div>
           <div>

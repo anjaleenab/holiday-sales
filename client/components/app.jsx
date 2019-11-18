@@ -14,11 +14,23 @@ export default class App extends React.Component {
     };
     this.setView = this.setView.bind(this);
   }
-  setView(name, params) {
-    this.setState({
-      name: 'details',
-      params: { id: 'product.id' }
-    });
+  setView(location, id) {
+    if (id) {
+      this.setState({
+        view: {
+          name: location,
+          params: { id: parseInt(id) }
+        }
+      });
+    } else {
+      this.setState({
+        view: {
+          name: location,
+          params: {}
+        }
+      });
+    }
+
   }
   render() {
     if (this.state.view.name === 'catalog') {
@@ -30,7 +42,9 @@ export default class App extends React.Component {
       );
     } else {
       return (
-        <ProductDetails />
+        <ProductDetails viewSetter={this.setView}
+          currentProduct = {this.state.view.params}
+          currentStatus = {this.state.view.name}/>
       );
     }
   }

@@ -7,16 +7,13 @@ class ProductList extends React.Component {
     this.state = {
       products: []
     };
-    this.handleClick = this.handleClick.bind(this);
+
   }
   getProducts() {
     fetch('/api/products.php')
       .then(data => data.json())
       .then(productsList => this.setState({ products: productsList }));
 
-  }
-  handleClick(productID) {
-    // console.log(productID);
   }
   componentDidMount() {
     this.getProducts();
@@ -25,7 +22,7 @@ class ProductList extends React.Component {
   render() {
     return (
       <div className="grid-container">
-        <ProductListItem products={this.state.products} viewSetter = {this.handleClick}/>
+        <ProductListItem products={this.state.products} viewSetter = {this.props.viewSetter}/>
       </div>
     );
   }
