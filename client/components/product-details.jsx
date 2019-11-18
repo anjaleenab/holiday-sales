@@ -10,18 +10,22 @@ class ProductDetails extends React.Component {
   componentDidMount(id) {
     fetch(`/api/products.php?id={id}`)
       .then(response => response.json())
-      .then(productInView => this.setState({ product: productInView }));
+      .then(productInView => this.setState({ product: productInView }))
+      .catch(response => console.error(response));
   }
   render() {
-    // if (this.state.product) {
-    //   return (
-    //     <div></div>
-    //   );
-    // } else {
-    return (
-      null
-    );
-    // }
-  }
 
+    if (this.state.product) {
+      return (
+        <div></div>
+      );
+    } else {
+      return (
+        null
+      );
+    // }
+    }
+
+  }
 }
+export default ProductDetails;
