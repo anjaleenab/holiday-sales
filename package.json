@@ -4,6 +4,7 @@
   "description": "A full stack LAMP & React shopping cart app.",
   "scripts": {
     "dev": "webpack-dev-server",
+    "watch": "webpack --watch --mode=development --devtool=source-map",
     "build": "webpack --mode=production",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

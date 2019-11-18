@@ -7,6 +7,7 @@ class ProductList extends React.Component {
     this.state = {
       products: []
     };
+
   }
   getProducts() {
     fetch('/api/products.php')
@@ -19,9 +20,11 @@ class ProductList extends React.Component {
 
   }
   render() {
-    return <div className="grid-container">
-      <ProductListItem items={this.state.products} />
-    </div>;
+    return (
+      <div className="grid-container">
+        <ProductListItem products={this.state.products} viewSetter = {this.props.viewSetter}/>
+      </div>
+    );
   }
 }
 
