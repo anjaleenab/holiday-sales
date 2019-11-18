@@ -33,6 +33,9 @@ export default class App extends React.Component {
     }
 
   }
+  getCartItems() {
+    fetch(`/api/cart.php`);
+  }
   render() {
     if (this.state.view.name === 'catalog') {
       return (
