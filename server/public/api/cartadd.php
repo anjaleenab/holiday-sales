@@ -63,9 +63,10 @@ if($cartID === false) {
   $_SESSION['cartId'] =$idCreated;
 }
 
+
 $cartItemInsertQuery= "INSERT INTO cartItems
                       (`count`, `productID`, `price`, `added`, `cartID`)
-                      VALUES (1,$productData, "
+                      VALUES (1,$productData, ";
 
 //query section of cart_add_get
 
