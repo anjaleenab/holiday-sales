@@ -14,6 +14,7 @@ export default class App extends React.Component {
       cart: []
     };
     this.setView = this.setView.bind(this);
+    this.getCartItems = this.getCartItems.bind(this);
   }
   setView(location, id) {
     if (id) {
@@ -33,6 +34,9 @@ export default class App extends React.Component {
     }
 
   }
+  componentDidMount() {
+    this.getCartItems();
+  }
   getCartItems() {
     fetch(`/api/cart.php`);
   }
@@ -40,7 +44,7 @@ export default class App extends React.Component {
     if (this.state.view.name === 'catalog') {
       return (
         <div>
-          <Header />
+          <Header cartItemCount = {this.state.cart.length}/>
           <ProductList viewSetter={this.setView}/>
         </div>
       );
