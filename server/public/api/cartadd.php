@@ -61,10 +61,13 @@ if($cartID === false) {
   $idCreated = mysqli_insert_id($conn);
   $cartID = $idCreated;
   $_SESSION['cartId'] =$idCreated;
-
 }
 
+$cartItemInsertQuery= "INSERT INTO cartItems
+                      (`count`, `productID`, `price`, `added`, `cartID`)
+                      VALUES (1,$productData, "
 
+//query section of cart_add_get
 
 
 ?>
