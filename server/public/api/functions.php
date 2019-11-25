@@ -15,5 +15,11 @@ function startup(){
   header('Content-type: application/json');
 }
 
+function getBodyData() {
+  $json = file_get_contents('php://input');
+  $output = json_decode($json, true);
+  return $output;
+}
+
 
 ?>
