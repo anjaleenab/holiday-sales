@@ -39,6 +39,7 @@ class ProductDetails extends React.Component {
           </div>
           <div> {this.state.product[0].LongDescription}</div>
         </React.Fragment>
+
       );
     } else {
       return (

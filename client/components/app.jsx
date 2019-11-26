@@ -65,7 +65,6 @@ export default class App extends React.Component {
           currentProduct = {this.state.view.params}
           currentStatus = {this.state.view.name}
           addProductToCart ={this.addToCart}/>
-
       );
     }
   }
