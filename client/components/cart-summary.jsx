@@ -1,8 +1,8 @@
 import React from 'react';
-import cartSummaryItem from './cart-summary-item';
+import CartSummaryItem from './cart-summary-item';
 import header from './header';
 
-function cartSummary(props) {
+function CartSummary(props) {
   return (
     <header />,
     <div>
@@ -12,7 +12,7 @@ function cartSummary(props) {
       <div>My Cart
         {props.cart ? props.cart.map((cartItem, index) => {
           return (
-            <cartSummaryItem
+            <CartSummaryItem
               key={index}
               image={cartItem.image}
               name={cartItem.name}
@@ -20,12 +20,15 @@ function cartSummary(props) {
               shortDescription={cartItem.shortDescription} />
           );
         })
-          : null
+          : <div>There are no items in your cart. </div>
         }
       </div>
       <div>Item Total $</div>
+      <div>
+        <button> Checkout</button>
+      </div>
     </div>
   );
 }
 
-export default cartSummary;
+export default CartSummary;

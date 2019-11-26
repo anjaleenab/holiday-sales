@@ -1,6 +1,6 @@
 import React from 'react';
 
-function cartSummaryItem(props) {
+function CartSummaryItem(props) {
   return (
     <div>
       <div>
@@ -19,4 +19,4 @@ function cartSummaryItem(props) {
   );
 }
 
-export default cartSummaryItem;
+export default CartSummaryItem;

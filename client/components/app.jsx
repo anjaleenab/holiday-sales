@@ -2,7 +2,7 @@ import React from 'react';
 import Header from './header';
 import ProductList from './product-list';
 import ProductDetails from './product-details';
-import cartSummary from './cart-summary';
+import CartSummary from './cart-summary';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -60,29 +60,29 @@ export default class App extends React.Component {
     fetch(`/api/cart.php`);
   }
   render() {
-    return (
-      <Header
-        cartItemCount={this.state.cart.length}
-        viewSetter={this.setView} />
-
-    );,
+    var component;
     if (this.state.view.name === 'catalog') {
-      return (
+      component =
         <div>
-          <ProductList viewSetter={this.setView}/>
-        </div>
-      );
+          <ProductList viewSetter={this.setView} />
+        </div>;
     } else if (this.state.view.name === 'cart') {
-      return (
-        <cartSummary currentStatus={this.state.view.name}/>
-      );
+      component =
+        <CartSummary currentStatus={this.state.view.name}
+          viewSetter={this.setView}/>;
     } else {
-      return (
-        <ProductDetails viewSetter={this.setView}
-          currentProduct = {this.state.view.params}
-          currentStatus = {this.state.view.name}
-          addProductToCart ={this.addToCart}/>
-      );
+      component = <ProductDetails viewSetter={this.setView}
+        currentProduct={this.state.view.params}
+        currentStatus={this.state.view.name}
+        addProductToCart={this.addToCart} />;
     }
+    return (
+      <div>
+        <Header
+          cartItemCount={this.state.cart.length}
+          viewSetter={this.setView} />
+        {component}
+      </div>
+    );
   }
 }
