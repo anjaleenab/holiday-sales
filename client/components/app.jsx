@@ -60,9 +60,12 @@ export default class App extends React.Component {
     fetch(`/api/cart.php`);
   }
   render() {
-    <Header
-      cartItemCount={this.state.cart.length}
-      viewSetter={this.setView} />;
+    return (
+      <Header
+        cartItemCount={this.state.cart.length}
+        viewSetter={this.setView} />
+
+    );,
     if (this.state.view.name === 'catalog') {
       return (
         <div>
