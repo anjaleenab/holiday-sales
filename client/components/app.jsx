@@ -70,6 +70,10 @@ export default class App extends React.Component {
     };
     fetch(`/api/orders.php`, data)
       .then(this.setState({
+        view: {
+          name: 'catalog',
+          params: {}
+        },
         cart: []
       }));
   }
