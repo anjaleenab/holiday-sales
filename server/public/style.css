@@ -2,3 +2,8 @@
   display: grid;
   grid-template-columns: 400px 400px 400px;
 }
+
+h1 > span {
+  float: right;
+  margin-right: 50px;
+}

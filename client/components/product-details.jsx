@@ -6,6 +6,10 @@ class ProductDetails extends React.Component {
     this.state = {
       product: null
     };
+    this.addCurrentProduct = this.addCurrentProduct.bind(this);
+  }
+  addCurrentProduct(product) {
+    this.props.addProductToCart(this.state.product[0]);
   }
   componentDidMount() {
     fetch(`/api/products.php?id=${this.props.currentProduct.id}`)
@@ -30,6 +34,7 @@ class ProductDetails extends React.Component {
           <div>
             <div style={style}>
               <div>{this.state.product[0].Name}{this.state.product[0].Price}{this.state.product[0].ShortDescription}</div>
+              <button onClick ={this.addCurrentProduct}>Add To Cart</button>
             </div>
           </div>
           <div> {this.state.product[0].LongDescription}</div>
