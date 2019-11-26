@@ -17,6 +17,7 @@ export default class App extends React.Component {
     this.setView = this.setView.bind(this);
     this.getCartItems = this.getCartItems.bind(this);
     this.addToCart = this.addToCart.bind(this);
+    this.placeItems = this.placeItems.bind(this);
   }
   setView(location, id) {
     if (id) {
@@ -58,6 +59,19 @@ export default class App extends React.Component {
   }
   getCartItems() {
     fetch(`/api/cart.php`);
+  }
+  placeItems(orderObj) {
+    var data = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(orderObj)
+    };
+    fetch(`/api/orders.php`, data)
+      .then(this.setState({
+        cart: []
+      }));
   }
   render() {
     var component;
