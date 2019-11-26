@@ -2,6 +2,7 @@ import React from 'react';
 import Header from './header';
 import ProductList from './product-list';
 import ProductDetails from './product-details';
+import cartSummary from './cart-summary';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -23,6 +24,13 @@ export default class App extends React.Component {
         view: {
           name: location,
           params: { id: parseInt(id) }
+        }
+      });
+    } else if (location === 'cart') {
+      this.setState({
+        view: {
+          name: location,
+          params: {}
         }
       });
     } else {
@@ -52,12 +60,18 @@ export default class App extends React.Component {
     fetch(`/api/cart.php`);
   }
   render() {
+    <Header
+      cartItemCount={this.state.cart.length}
+      viewSetter={this.setView} />;
     if (this.state.view.name === 'catalog') {
       return (
         <div>
-          <Header cartItemCount = {this.state.cart.length}/>
           <ProductList viewSetter={this.setView}/>
         </div>
+      );
+    } else if (this.state.view.name === 'cart') {
+      return (
+        <cartSummary currentStatus={this.state.view.name}/>
       );
     } else {
       return (

@@ -6,22 +6,24 @@ function cartSummary(props) {
   return (
     <header />,
     <div>
-      <div><button>Back to Catalog</button></div>
-      <div>My Cart
-      CART ITEM HERE
-      {props.cart.map((cartItem, index) => {
-        return (
-
-          <cartSummaryItem
-            key={index}
-            image={cartItem.image}
-            name={cartItem.name}
-            price={cartItem.price}
-            shortDescription={cartItem.shortDescription} />
-        );
-      })
-      }
+      <div>
+        <button onClick={() => props.viewSetter('catalog', null)}>Back to Catalog</button>
       </div>
+      <div>My Cart
+        {props.cart ? props.cart.map((cartItem, index) => {
+          return (
+            <cartSummaryItem
+              key={index}
+              image={cartItem.image}
+              name={cartItem.name}
+              price={cartItem.price}
+              shortDescription={cartItem.shortDescription} />
+          );
+        })
+          : null
+        }
+      </div>
+      <div>Item Total $</div>
     </div>
   );
 }
