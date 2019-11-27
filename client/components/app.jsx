@@ -3,6 +3,7 @@ import Header from './header';
 import ProductList from './product-list';
 import ProductDetails from './product-details';
 import CartSummary from './cart-summary';
+import CheckoutForm from './checkout-form';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -27,13 +28,14 @@ export default class App extends React.Component {
           params: { id: parseInt(id) }
         }
       });
-    } else if (location === 'cart') {
-      this.setState({
-        view: {
-          name: location,
-          params: {}
-        }
-      });
+      // } else if (location === 'cart') {
+      //   this.setState({
+      //     view: {
+      //       name: location,
+      //       params: {}
+      //     }
+      //   });
+
     } else {
       this.setState({
         view: {
@@ -87,7 +89,11 @@ export default class App extends React.Component {
     } else if (this.state.view.name === 'cart') {
       component =
         <CartSummary currentStatus={this.state.view.name}
-          viewSetter={this.setView}/>;
+          viewSetter={this.setView}
+          cart={this.state.cart}/>;
+    } else if (this.state.view.name === 'checkout') {
+      component =
+        <CheckoutForm viewSetter={this.setView}/>;
     } else {
       component = <ProductDetails viewSetter={this.setView}
         currentProduct={this.state.view.params}

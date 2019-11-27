@@ -7,7 +7,9 @@ function CartSummary(props) {
     <header />,
     <div>
       <div>
-        <button onClick={() => props.viewSetter('catalog', null)}>Back to Catalog</button>
+        <button
+          className="btn"
+          onClick={() => props.viewSetter('catalog', null)}>Back to Catalog</button>
       </div>
       <div>My Cart
         {props.cart ? props.cart.map((cartItem, index) => {
@@ -24,9 +26,11 @@ function CartSummary(props) {
         }
       </div>
       <div>Item Total $</div>
-      <div>
-        <button> Checkout</button>
-      </div>
+      {props.cart ? <div>
+        <button
+          className="btn"
+          onClick={() => props.viewSetter('checkout', null)}> Checkout</button>
+      </div> : null}
     </div>
   );
 }
