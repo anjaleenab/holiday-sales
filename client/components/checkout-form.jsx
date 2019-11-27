@@ -11,8 +11,10 @@ export default class CheckoutForm extends React.Component {
     this.handleNameChange = this.handleNameChange.bind(this);
     this.handleCreditCardChange = this.handleCreditCardChange.bind(this);
     this.handleAddressChange = this.handleAddressChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
   handleNameChange(event) {
+    event.persist();
     this.setState({
       nameValue: event.target.value
     });
@@ -26,6 +28,10 @@ export default class CheckoutForm extends React.Component {
     this.setState({
       addressValue: event.target.value
     });
+  }
+  handleSubmit(event) {
+    console.log('info submitted');
+    // make this function go to confirmation page?
   }
   render() {
     return (
@@ -52,10 +58,11 @@ export default class CheckoutForm extends React.Component {
         <div>
           <button
             className ="btn"
-            onClick={() => this.props.viewSetter('catalog', null)}>Continue Shopping</button>
+            onClick={() => this.props.viewSetter('catalog', null)}
+          >Continue Shopping</button>
           <button
             className="btn"
-            // onClick=
+            onClick={this.handleSubmit}
           >Place Order</button>
         </div>
       </div>
