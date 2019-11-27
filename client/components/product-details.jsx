@@ -29,12 +29,16 @@ class ProductDetails extends React.Component {
       return (
         <React.Fragment>
           <div>
-            <button onClick={() => this.props.viewSetter('catalog')}> Back To Catalog </button>
+            <button
+              className="btn"
+              onClick={() => this.props.viewSetter('catalog')}> Back To Catalog </button>
           </div>
           <div>
             <div style={style}>
               <div>{this.state.product[0].Name}{this.state.product[0].Price}{this.state.product[0].ShortDescription}</div>
-              <button onClick ={this.addCurrentProduct}>Add To Cart</button>
+              <button
+                className="btn"
+                onClick ={this.addCurrentProduct}>Add To Cart</button>
             </div>
           </div>
           <div> {this.state.product[0].LongDescription}</div>

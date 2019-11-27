@@ -1,18 +1,20 @@
 import React from 'react';
-import cartSummaryItem from './cart-summary-item';
+import CartSummaryItem from './cart-summary-item';
 import header from './header';
 
-function cartSummary(props) {
+function CartSummary(props) {
   return (
     <header />,
     <div>
       <div>
-        <button onClick={() => props.viewSetter('catalog', null)}>Back to Catalog</button>
+        <button
+          className="btn"
+          onClick={() => props.viewSetter('catalog', null)}>Back to Catalog</button>
       </div>
       <div>My Cart
         {props.cart ? props.cart.map((cartItem, index) => {
           return (
-            <cartSummaryItem
+            <CartSummaryItem
               key={index}
               image={cartItem.image}
               name={cartItem.name}
@@ -20,12 +22,17 @@ function cartSummary(props) {
               shortDescription={cartItem.shortDescription} />
           );
         })
-          : null
+          : <div>There are no items in your cart. </div>
         }
       </div>
       <div>Item Total $</div>
+      {props.cart ? <div>
+        <button
+          className="btn"
+          onClick={() => props.viewSetter('checkout', null)}> Checkout</button>
+      </div> : null}
     </div>
   );
 }
 
-export default cartSummary;
+export default CartSummary;
