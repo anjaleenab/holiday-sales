@@ -8,7 +8,7 @@ function CartSummary(props) {
     <div>
       <div>
         <button
-          className="btn"
+          className="btn btn-sm btn-dark"
           onClick={() => props.viewSetter('catalog', null)}>Back to Catalog</button>
       </div>
       <div>My Cart
@@ -28,7 +28,7 @@ function CartSummary(props) {
       <div>Item Total $</div>
       {props.cart ? <div>
         <button
-          className="btn"
+          className="btn btn-dark"
           onClick={() => props.viewSetter('checkout', null)}> Checkout</button>
       </div> : null}
     </div>

@@ -27,22 +27,26 @@ class ProductDetails extends React.Component {
         backgroundRepeat: 'no-repeat'
       };
       return (
-        <React.Fragment>
+        <div>
           <div>
             <button
-              className="btn"
+              className="btn btn-sm btn-dark"
               onClick={() => this.props.viewSetter('catalog')}> Back To Catalog </button>
           </div>
-          <div>
-            <div style={style}>
-              <div>{this.state.product[0].Name}{this.state.product[0].Price}{this.state.product[0].ShortDescription}</div>
+          <div className="d-flex flex-row">
+            <div style={style}></div>
+            <div>
+              {this.state.product[0].Name} <br />
+              {this.state.product[0].Price}<br />
+              {this.state.product[0].ShortDescription}<br />
               <button
-                className="btn"
-                onClick ={this.addCurrentProduct}>Add To Cart</button>
+                className="btn btn-dark"
+                onClick ={this.addCurrentProduct}> Add To Cart
+              </button>
             </div>
           </div>
           <div> {this.state.product[0].LongDescription}</div>
-        </React.Fragment>
+        </div>
 
       );
     } else {
