@@ -57,11 +57,11 @@ export default class CheckoutForm extends React.Component {
         </form>
         <div>
           <button
-            className ="btn"
+            className="btn btn-dark"
             onClick={() => this.props.viewSetter('catalog', null)}
           >Continue Shopping</button>
           <button
-            className="btn"
+            className="btn btn-dark"
             onClick={this.handleSubmit}
           >Place Order</button>
         </div>
