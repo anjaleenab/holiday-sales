@@ -13,13 +13,15 @@ function ProductListItem(props) {
         height: 200 + 'px',
         backgroundSize: 'contain',
         backgroundRepeat: 'no-repeat',
-        margin: 'auto'
+        margin: '0px auto'
       };
       return (
         <div
           key={id}
           onClick ={ () => props.viewSetter('details', id)} >
-          <div style={style} >
+          <div
+            className="item"
+            style={style} >
           </div>
           <div>
             ${price}
