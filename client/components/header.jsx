@@ -2,7 +2,7 @@ import React from 'react';
 
 function Header(props) {
   return (
-    <header>
+    <header style={{ marginLeft: '10px' }}>
       <h1>
       Wicked Sales
         <span>{props.cartItemCount}

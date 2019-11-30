@@ -21,7 +21,7 @@ class ProductList extends React.Component {
   }
   render() {
     return (
-      <div className="grid-container">
+      <div className="grid-container ml-5">
         <ProductListItem products={this.state.products} viewSetter = {this.props.viewSetter}/>
       </div>
     );

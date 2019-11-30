@@ -12,10 +12,13 @@ function ProductListItem(props) {
         width: 200 + 'px',
         height: 200 + 'px',
         backgroundSize: 'contain',
-        backgroundRepeat: 'no-repeat'
+        backgroundRepeat: 'no-repeat',
+        margin: 'auto'
       };
       return (
-        <div key={id} onClick ={ () => props.viewSetter('details', id)} >
+        <div
+          key={id}
+          onClick ={ () => props.viewSetter('details', id)} >
           <div style={style} >
           </div>
           <div>
