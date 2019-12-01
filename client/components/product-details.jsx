@@ -22,7 +22,7 @@ class ProductDetails extends React.Component {
       var style = {
         backgroundImage: 'url(' + this.state.product[0].Image[0] + ')',
         width: 400 + 'px',
-        height: 350 + 'px',
+        height: 220 + 'px',
         backgroundSize: 'contain',
         backgroundRepeat: 'no-repeat'
       };
@@ -33,16 +33,16 @@ class ProductDetails extends React.Component {
               className="btn btn-sm btn-dark"
               onClick={() => this.props.viewSetter('catalog')}> Back To Catalog </button>
           </div>
-          <div className="d-flex flex-row justify-content-around">
+          <div className="d-flex flex-row justify-content-around product">
             <div style={style}></div>
-            <div>
+            <div className="shortDesc">
               {this.state.product[0].Name} <br />
               <ul>
                 <li><b>${this.state.product[0].Price}</b> <br /></li>
                 <li>{this.state.product[0].ShortDescription}<br /></li>
               </ul>
               <button
-                className="btn btn-dark mt-3"
+                className="btn btn-dark mt-3 addBtn"
                 onClick ={this.addCurrentProduct}> Add To Cart
               </button>
             </div>
