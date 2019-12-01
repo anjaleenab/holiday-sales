@@ -21,3 +21,7 @@ margin: 0px 15px;
 transform: scale(1.1);
 box-shadow: 5px 10px 30px lightgray;
 }
+
+.itemTotal {
+  margin-right: 100px;
+}

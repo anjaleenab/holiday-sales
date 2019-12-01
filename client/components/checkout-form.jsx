@@ -36,25 +36,32 @@ export default class CheckoutForm extends React.Component {
   render() {
     return (
       <div>
-        <div>Checkout</div>
-        <div>Order Total: </div>
-        <form>
-          <label>Name</label>
-          <input
-            placeholder="Name"
-            value={this.state.nameValue}
-            onChange ={this.handleNameChange}></input>
-          <label>Credit Card Number</label>
-          <input
-            placeholder="Credit Card Number"
-            value={this.state.creditCardValue}
-            onChange={this.handleCreditCardChange}></input>
-          <label>Shipping Information</label>
-          <input
-            placeholder="Shipping Information"
-            value={this.state.addressValue}
-            onChange={this.handleAddressChange}></input>
-        </form>
+        <div className="column">Checkout
+          <div>Order Total: </div>
+          <form>
+            <div className="form-group">
+              <label>Name</label>
+              <input
+                placeholder="Name"
+                value={this.state.nameValue}
+                onChange ={this.handleNameChange}></input>
+            </div>
+            <div className="form-group">
+              <label>Credit Card Number</label>
+              <input
+                placeholder="Credit Card Number"
+                value={this.state.creditCardValue}
+                onChange={this.handleCreditCardChange}></input>
+            </div>
+            <div className="form-group">
+              <label>Shipping Information</label>
+              <input
+                placeholder="Shipping Information"
+                value={this.state.addressValue}
+                onChange={this.handleAddressChange}></input>
+            </div>
+          </form>
+        </div>
         <div>
           <button
             className="btn btn-dark"
@@ -65,6 +72,7 @@ export default class CheckoutForm extends React.Component {
             onClick={this.handleSubmit}
           >Place Order</button>
         </div>
+
       </div>
     );
   }
