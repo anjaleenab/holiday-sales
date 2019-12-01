@@ -33,7 +33,7 @@ class ProductDetails extends React.Component {
               className="btn btn-sm btn-dark"
               onClick={() => this.props.viewSetter('catalog')}> Back To Catalog </button>
           </div>
-          <div className="d-flex flex-row justify-content-around product">
+          <div className="product">
             <div style={style}></div>
             <div className="shortDesc">
               {this.state.product[0].Name} <br />
