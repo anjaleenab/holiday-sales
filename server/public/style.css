@@ -14,7 +14,7 @@ h1 > span {
 }
 
 .prodDetailsLongDesc {
-margin: 0px 15px;
+margin: 60px 15px 0px 15px;
 }
 
 .cart:hover, .item:hover, button:hover{
@@ -37,6 +37,28 @@ box-shadow: 5px 10px 30px lightgray;
 @media (min-width: 320px) and (max-width: 374px){
   h1 >span {
     margin-right: 5px;
+  }
+}
+
+@media (min-width: 360px) and (max-width: 374px){
+  .shortDesc {
+    margin-left: 5px;
+  }
+
+}
+
+@media (min-width: 320px) and (max-width: 767px){
+  .product {
+    margin-left: 16px;
+  }
+  .shortDesc {
+    margin-left: 5px;
+  }
+  .prodDetailsLongDesc {
+    margin:5px 15px 0px 15px;
+  }
+  .addBtn {
+    margin-left:35px;
   }
 }
 
