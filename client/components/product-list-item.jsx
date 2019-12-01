@@ -13,7 +13,7 @@ function ProductListItem(props) {
         height: 200 + 'px',
         backgroundSize: 'contain',
         backgroundRepeat: 'no-repeat',
-        margin: '0px auto'
+        margin: '10px auto 0px'
       };
       return (
         <div
