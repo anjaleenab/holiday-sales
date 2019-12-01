@@ -17,10 +17,10 @@ function ProductListItem(props) {
       };
       return (
         <div
+          className="m-3 item"
           key={id}
           onClick ={ () => props.viewSetter('details', id)} >
           <div
-            className="item"
             style={style} >
           </div>
           <div>

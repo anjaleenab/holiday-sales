@@ -17,6 +17,7 @@ h1 > span {
 margin: 0px 15px;
 }
 
-.item:hover {
+.cart:hover, .item:hover {
 transform: scale(1.1);
+box-shadow: 5px 10px 30px lightgray;
 }
