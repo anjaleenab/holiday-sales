@@ -13,6 +13,11 @@ h1 > span {
   margin-bottom: 25px;
 }
 
+.product {
+  display: flex;
+  justify-content: space-around;
+}
+
 .prodDetailsLongDesc {
 margin: 60px 15px 0px 15px;
 }
@@ -68,6 +73,48 @@ box-shadow: 5px 10px 30px lightgray;
   }
 }
 
+@media (min-width: 768px) and (max-width: 1022px) {
+  button {
+    width: 140px;
+    height:40px;
+  }
+  .catalogReturn {
+    margin-top: 15px;
+  }
+  .shortDesc {
+    margin-top: 30px;
+  }
+  .product {
+    margin-top: 40px;
+    font-size: 25px;
+  }
+  .prodDetailsLongDesc {
+    margin:40px 15px 0px 45px;
+     font-size: 25px;
+  }
+}
+
+@media (min-width: 1023px) and (max-width: 1030px) {
+  button {
+    width: 150px;
+    height:45px;
+  }
+  .catalogReturn {
+    margin-top: 15px;
+  }
+  .shortDesc {
+    margin-top: 50px;
+  }
+  .product {
+    margin-top: 100px;
+    font-size: 25px;
+  }
+  .prodDetailsLongDesc {
+    margin:75px 15px 0px 45px;
+     font-size: 25px;
+  }
+}
+
 @media (min-width:768px) and (max-width: 1025px){
   .grid-container {
     grid-template-columns: 66vh;
@@ -76,6 +123,11 @@ box-shadow: 5px 10px 30px lightgray;
     display: flex;
     flex-direction: column;
     align-items: center;
+  }
+  .product {
+    display: flex;
+    flex-direction: column;
+    margin-left:  60px;
   }
 }
 
