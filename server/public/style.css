@@ -17,6 +17,19 @@ h1 > span {
 margin: 0px 15px;
 }
 
-.item:hover {
+.cart:hover, .item:hover, button:hover{
 transform: scale(1.1);
+box-shadow: 5px 10px 30px lightgray;
+}
+
+.itemTotal {
+  margin-right: 100px;
+}
+
+.contShop {
+  margin-left: 65px;
+}
+
+.checkoutFormButtons {
+  margin-top: 70px;
 }
