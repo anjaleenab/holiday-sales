@@ -20,7 +20,7 @@ if(empty($_SESSION['cartId'])) {
   $cartID = false;
 }
 
-$priceQuery = "SELECT `Price`, `Image`, `Name`, `ShortDescription`, `LongDescription`
+$priceQuery = "SELECT `Price`, `Image`, `Name`, `ShortDescription`
                FROM PRODUCTS
                WHERE `ID` = $id";
 
@@ -34,10 +34,12 @@ if(!$numberOfRows) {
   throw new Exception('Invalid ID');
 }
 
-$productData ='';
+$productData =[];
+$itemPrice= $productData['price'];
 
 while ($row = mysqli_fetch_assoc($result)) {
-  $productData = $row['id'];
+  $row['price']=intval($row['Price']);
+  $productData = $row;
 }
 
 if ((!$result)) {
@@ -56,7 +58,7 @@ if($cartID === false) {
   }
   $rowsInserted=mysql_affected_rows($conn);
   if(!$rowsInserted === 1){
-    throw new Exception('Insertion Query had an error');
+    throw new Exception(mysqli_error($conn));
   }
   $idCreated = mysqli_insert_id($conn);
   $cartID = $idCreated;
@@ -66,9 +68,18 @@ if($cartID === false) {
 
 $cartItemInsertQuery= "INSERT INTO cartItems
                       (`count`, `productID`, `price`, `added`, `cartID`)
-                      VALUES (1,$productData, ";
+                      VALUES (1, $id, $itemPrice, NOW(), $cartID
+                      ON DUPLICATE KEY UPDATE count=count+1 ";
 
-//query section of cart_add_get
-
+$cartItemInsertResult = mysqli_query($conn, $cartItemInsertQuery);
+if(!$cartItemInsertResult) {
+  throw new Exception(mysqli_error($conn));
+}
+$itemsInserted = mysql_affected_rows($conn);
+if (!$itemsInserted >= 1) {
+  mysqli_query($conn, "ROLLBACK");
+  throw new Exception(mysqli_error($conn));
+  mysqli_query($conn, "COMMIT");
+}
 
 ?>
