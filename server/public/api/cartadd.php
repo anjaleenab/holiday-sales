@@ -19,7 +19,7 @@ if(empty($_SESSION['cartId'])) {
 } else {
   $cartID = false;
 }
-
+//may not need all of these items from this query
 $priceQuery = "SELECT `Price`, `Image`, `Name`, `ShortDescription`
                FROM PRODUCTS
                WHERE `ID` = $id";
