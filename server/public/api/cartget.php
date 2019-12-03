@@ -29,6 +29,6 @@ while ($row = mysqli_fetch_assoc($result)) {
   $cartInfo = $row;
 }
 
-print_r(json.encoded($cartInfo));
+print_r(json_encode($cartInfo));
 
 ?>

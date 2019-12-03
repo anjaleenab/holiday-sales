@@ -28,14 +28,6 @@ export default class App extends React.Component {
           params: { id: parseInt(id) }
         }
       });
-      // } else if (location === 'cart') {
-      //   this.setState({
-      //     view: {
-      //       name: location,
-      //       params: {}
-      //     }
-      //   });
-
     } else {
       this.setState({
         view: {
@@ -57,11 +49,14 @@ export default class App extends React.Component {
       },
       body: JSON.stringify(product)
     };
-    fetch(`/api/cart.php?`, data);
+    fetch(`/api/cart.php`, data);
 
   }
   getCartItems() {
-    fetch(`/api/cart.php`);
+    fetch('/api/cart.php')
+      .then(response => response.json())
+      .then(cartItems => this.setState({ cart: cartItems }))
+      .catch(response => console.error(response));
   }
   placeItems(orderObj) {
     var data = {

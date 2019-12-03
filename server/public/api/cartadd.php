@@ -84,5 +84,5 @@ if (!$itemsInserted >= 1) {
   mysqli_query($conn, "COMMIT");
 }
 
-print_r('it happened');
+
 ?>
