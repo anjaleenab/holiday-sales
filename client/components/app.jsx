@@ -57,7 +57,8 @@ export default class App extends React.Component {
       },
       body: JSON.stringify(product)
     };
-    fetch(`/api/cart.php`, data);
+    fetch(`/api/cart.php?`, data);
+
   }
   getCartItems() {
     fetch(`/api/cart.php`);

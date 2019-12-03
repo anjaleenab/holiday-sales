@@ -1,15 +1,15 @@
 <?php
 
-if (defined(INTERNAL)) {
+if (!defined('INTERNAL')) {
   exit('Direct access is not allowed');
 }
 
-if(empty(SESSION['cart_id'])){
+if(empty($_SESSION['cartId'])){
   print_r(json_encode([]));
   exit();
 }
 
-$cartId = intval(SESSION['cart_id']);
+$cartId = intval($_SESSION['cartId']);
 
 //can use cartid here for order confirmation or make a separate query for it later
 $cartInfoQuery= "SELECT cartItems.`id`,cartItems.`productID`,cartItems.`count`,cartItems.`price`,
