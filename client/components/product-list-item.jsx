@@ -9,8 +9,8 @@ function ProductListItem(props) {
       var name = item['Name'];
       var style = {
         backgroundImage: 'url(' + itemImage + ')',
-        width: 200 + 'px',
-        height: 200 + 'px',
+        width: 250 + 'px',
+        height: 300 + 'px',
         backgroundSize: 'contain',
         backgroundRepeat: 'no-repeat',
         margin: '10px auto 0px'
