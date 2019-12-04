@@ -7,6 +7,7 @@ function CartSummaryItem(props) {
       var itemImage = cartItem['Image'];
       var price = cartItem['price'];
       var shortdescription = cartItem['ShortDescription'];
+      var numberOfItem = cartItem['count'];
       var style = {
         backgroundImage: 'url(' + itemImage + ')',
         width: 200 + 'px',
@@ -26,6 +27,8 @@ function CartSummaryItem(props) {
             </div>
             <div>
               ${price}
+              <br/>
+              Quantity: {numberOfItem}
             </div>
             <div>
               {shortdescription}
