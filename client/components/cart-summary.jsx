@@ -3,6 +3,14 @@ import CartSummaryItem from './cart-summary-item';
 import header from './header';
 
 function CartSummary(props) {
+  var price = 0;
+
+  for (var itemNumber = 0; itemNumber < props.cart.length; itemNumber++) {
+    var amountForEach = props.cart[itemNumber]['price'] * props.cart[itemNumber]['count'];
+    price += amountForEach;
+
+  }
+  var currency = price.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
   return (
     <header />,
     <div>
@@ -18,7 +26,7 @@ function CartSummary(props) {
         }
       </div>
 
-      {props.cart.length >= 1 ? <div className="itemTotal float-right">Item Total $<div>
+      {props.cart.length >= 1 ? <div className="itemTotal float-right">Item Total ${currency}<div>
         <button
           className="btn btn-dark mt-2 ml-3"
           onClick={() => props.viewSetter('checkout', null)}> Checkout</button>

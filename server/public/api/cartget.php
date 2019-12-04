@@ -23,6 +23,8 @@ $result = mysqli_query($conn, $cartInfoQuery);
 
 $cartInfo = [];
 while ($row = mysqli_fetch_assoc($result)) {
+  $row["id"] = intval($row["id"]);
+  $row["count"] = intval($row["count"]);
   $row["orderNumber"] = intval($row["id"]);
   $row['productID'] =intval($row['productID']);
   $row['price']=intval($row['price']);

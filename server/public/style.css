@@ -40,12 +40,12 @@ box-shadow: 5px 10px 30px lightgray;
 }
 
 .cartItem {
-  border: 2px outset black;
-  margin: 5px;
+  border: 2px solid black;
+  margin: 10px;
 }
 
 .cartItemInfo {
-  margin-right: 50px;
+  margin-left: 100px;
   margin-top: 20px;
 }
 

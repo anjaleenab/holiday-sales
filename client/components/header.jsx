@@ -1,7 +1,10 @@
 import React from 'react';
 
 function Header(props) {
-  var count = props.cartItemCount;
+  var count = 0;
+  for (var itemNumber = 0; itemNumber < props.cart.length; itemNumber++) {
+    count += props.cart[itemNumber]['count'];
+  }
   return (
     <header style={{ marginLeft: '10px' }}>
       <h1>
