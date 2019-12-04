@@ -12,13 +12,13 @@ function CartSummary(props) {
           onClick={() => props.viewSetter('catalog', null)}>Back to Catalog</button>
       </div>
       <div className="d-flex flex-column m-5 cart">Shopping Cart
-        {props.cart.length
+        {props.cart.length >= 1
           ? <CartSummaryItem cart={props.cart}/>
           : <div className="emptyCart">Your shopping cart is currently empty.</div>
         }
       </div>
 
-      {props.cart.length ? <div className="itemTotal float-right">Item Total $<div>
+      {props.cart.length >= 1 ? <div className="itemTotal float-right">Item Total $<div>
         <button
           className="btn btn-dark mt-2 ml-3"
           onClick={() => props.viewSetter('checkout', null)}> Checkout</button>

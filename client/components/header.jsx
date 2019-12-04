@@ -6,7 +6,7 @@ function Header(props) {
     <header style={{ marginLeft: '10px' }}>
       <h1>
       Wicked Sales
-        <span className="cart">{count}
+        <span className="cartIcon">{count}
           <i onClick={() => props.viewSetter('cart', null)}
             className="fa fa-shopping-cart"></i>
         </span>
