@@ -10,7 +10,7 @@ function CartSummary(props) {
     price += amountForEach;
 
   }
-  var currency = price.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+  var currency = price.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
   return (
     <header />,
     <div>
