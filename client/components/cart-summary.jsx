@@ -12,16 +12,8 @@ function CartSummary(props) {
           onClick={() => props.viewSetter('catalog', null)}>Back to Catalog</button>
       </div>
       <div className="d-flex flex-column m-5 cart">Shopping Cart
-        {props.cartlength ? props.cart.map((cartItem, index) => {
-          return (
-            <CartSummaryItem
-              key={index}
-              image={cartItem.image}
-              name={cartItem.name}
-              price={cartItem.price}
-              shortDescription={cartItem.shortDescription} />
-          );
-        })
+        {props.cart.length
+          ? <CartSummaryItem cart={props.cart}/>
           : <div className="emptyCart">Your shopping cart is currently empty.</div>
         }
       </div>
