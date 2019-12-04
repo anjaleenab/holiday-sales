@@ -26,7 +26,7 @@ while ($row = mysqli_fetch_assoc($result)) {
   $row["orderNumber"] = intval($row["id"]);
   $row['productID'] =intval($row['productID']);
   $row['price']=intval($row['price']);
-  $cartInfo = $row;
+  $cartInfo[] = $row;
 }
 
 print_r(json_encode($cartInfo));
