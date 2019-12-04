@@ -31,6 +31,10 @@ box-shadow: 5px 10px 30px lightgray;
   margin-right: 100px;
 }
 
+.briefProductInfo {
+  text-align: center;
+}
+
 .contShop {
   margin-left: 65px;
 }
@@ -125,10 +129,21 @@ box-shadow: 5px 10px 30px lightgray;
   }
 }
 
-@media (min-width:768px) and (max-width: 1025px){
-  .grid-container {
-    grid-template-columns: 66vh;
+@media (min-width:428px) and (max-width: 1023px){
+   .grid-container {
+    grid-template-columns: 325px 325px;
   }
+
+}
+
+@media (min-width:866px) and (max-width: 1200px){
+   .grid-container {
+    grid-template-columns: 460px 460px;
+  }
+
+}
+
+@media (min-width:768px) and (max-width: 1025px){
   .item {
     display: flex;
     flex-direction: column;
