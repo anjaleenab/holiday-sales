@@ -10,10 +10,10 @@ function CartSummaryItem(props) {
       var style = {
         backgroundImage: 'url(' + itemImage + ')',
         width: 200 + 'px',
-        height: 200 + 'px',
+        height: 210 + 'px',
         backgroundSize: 'contain',
         backgroundRepeat: 'no-repeat',
-        margin: '10px auto 0px'
+        margin: 'auto 0px auto 10px'
       };
       return (
         <div className ="d-flex flex-row cartItem"
@@ -25,7 +25,7 @@ function CartSummaryItem(props) {
               {name}
             </div>
             <div>
-              {price}
+              ${price}
             </div>
             <div>
               {shortdescription}
@@ -38,4 +38,3 @@ function CartSummaryItem(props) {
 }
 
 export default CartSummaryItem;
-// <img src={itemImage}></img>

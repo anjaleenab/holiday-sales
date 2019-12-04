@@ -55,6 +55,7 @@ export default class App extends React.Component {
   getCartItems() {
     fetch('/api/cart.php')
       .then(response => response.json())
+      // .then(data => console.log(data));
       .then(cartItems => {
         this.setState({
           cart: cartItems
@@ -104,7 +105,7 @@ export default class App extends React.Component {
     return (
       <div>
         <Header
-          cartItemCount={this.state.cart.length}
+          cart={this.state.cart}
           viewSetter={this.setView} />
         {component}
       </div>
