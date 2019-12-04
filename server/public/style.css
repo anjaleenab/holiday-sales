@@ -31,6 +31,10 @@ box-shadow: 5px 10px 30px lightgray;
   margin-right: 100px;
 }
 
+.briefProductInfo {
+  text-align: center;
+}
+
 .contShop {
   margin-left: 65px;
 }

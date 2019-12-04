@@ -6,7 +6,7 @@ function ProductListItem(props) {
       var itemImage = item['Image'][0];
       var price = item['Price'];
       var id = item['ID'];
-      var description = item['ShortDescription'];
+      var name = item['Name'];
       var style = {
         backgroundImage: 'url(' + itemImage + ')',
         width: 200 + 'px',
@@ -23,10 +23,10 @@ function ProductListItem(props) {
           <div
             style={style} >
           </div>
-          <div>
-            ${price}
+          <div className="briefProductInfo">
+            {name}
             <br />
-            {description}
+            ${price}
           </div>
         </div>
       );
