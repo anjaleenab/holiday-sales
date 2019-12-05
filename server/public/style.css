@@ -183,9 +183,3 @@ box-shadow: 5px 10px 30px lightgray;
   }
 
 }
-
-@media (min-height: 812px) and (max-height: 1023px){
- .grid-container {
-   margin-left: 2rem!important;
- }
-}
