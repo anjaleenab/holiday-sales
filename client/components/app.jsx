@@ -113,7 +113,8 @@ export default class App extends React.Component {
       component = <ProductDetails viewSetter={this.setView}
         currentProduct={this.state.view.params}
         currentStatus={this.state.view.name}
-        addProductToCart={this.addToCart}/>;
+        addProductToCart={this.addToCart}
+        updateCartProducts = {this.getCartItems}/>;
     }
     return (
       <div>
