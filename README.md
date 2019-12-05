@@ -10,9 +10,6 @@ A mobile responsive, holiday themed full stack LAMP & React shopping cart app.
 * MySQL
 * Webpack 4
 
-# Preview
-<img src="assets\images\sitepreview.JPG" alt="Holiday Sales Preview" style="max-width: 100%;">
-
 ## Features
 
 - User can view a list of products.
