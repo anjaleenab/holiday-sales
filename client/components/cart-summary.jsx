@@ -19,7 +19,7 @@ function CartSummary(props) {
           className="btn btn-sm btn-dark"
           onClick={() => props.viewSetter('catalog', null)}>Back to Catalog</button>
       </div>
-      <div className="d-flex flex-column m-5 cart">Shopping Cart
+      <div className="d-flex flex-column m-4 cart">Shopping Cart
         {props.cart.length >= 1
           ? <CartSummaryItem cart={props.cart}/>
           : <div className="emptyCart">Your shopping cart is currently empty.</div>
