@@ -11,7 +11,6 @@ if(empty($_SESSION['cartId'])){
 
 $cartId = intval($_SESSION['cartId']);
 
-//can use cartid here for order confirmation or make a separate query for it later
 $cartInfoQuery= "SELECT cartItems.`id`,cartItems.`productID`,cartItems.`count`,cartItems.`price`,
                 Products.`name`, Products.`ShortDescription`, Products.`Image`
                 FROM cartItems

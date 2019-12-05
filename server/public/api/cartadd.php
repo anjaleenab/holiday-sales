@@ -4,7 +4,7 @@ if (!defined('INTERNAL')) {
   exit('Direct access is not allowed');
 }
 
-print('it happened');
+
 $newOutput=getBodyData();
 
 $id = intval($newOutput['ID']);
@@ -21,8 +21,7 @@ if(!empty($_SESSION['cartId'])) {
   $cartID = false;
 }
 
-//may not need all of these items from this query
-$priceQuery = "SELECT `Price`, `Image`, `Name`, `ShortDescription`
+$priceQuery = "SELECT `Price`
                FROM Products
                WHERE `ID` = $id";
 
