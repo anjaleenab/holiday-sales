@@ -7,17 +7,14 @@ class ProductList extends React.Component {
     this.state = {
       products: []
     };
-
   }
   getProducts() {
     fetch('/api/products.php')
       .then(data => data.json())
       .then(productsList => this.setState({ products: productsList }));
-
   }
   componentDidMount() {
     this.getProducts();
-
   }
   render() {
     return (

@@ -38,7 +38,6 @@ export default class App extends React.Component {
         }
       });
     }
-
   }
   componentDidMount() {
     this.getCartItems();
@@ -65,7 +64,6 @@ export default class App extends React.Component {
         });
       })
       .catch(response => console.error(response));
-
   }
   placeItems(orderObj) {
     var data = {
@@ -86,13 +84,11 @@ export default class App extends React.Component {
   }
   getOrderTotal() {
     var price = 0;
-
     for (var itemNumber = 0; itemNumber < this.state.cart.length; itemNumber++) {
       var amountForEach = this.state.cart[itemNumber]['price'] * this.state.cart[itemNumber]['count'];
       price += amountForEach;
 
     }
-
     var currency = price.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
     return currency;
   }
