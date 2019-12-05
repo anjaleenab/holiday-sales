@@ -13,8 +13,10 @@ export default class App extends React.Component {
         name: 'catalog',
         params: {}
       },
-      cart: []
+      cart: [],
+      order: {}
     };
+    this.getOrderTotal = this.getOrderTotal.bind(this);
     this.setView = this.setView.bind(this);
     this.getCartItems = this.getCartItems.bind(this);
     this.addToCart = this.addToCart.bind(this);
@@ -40,6 +42,7 @@ export default class App extends React.Component {
   }
   componentDidMount() {
     this.getCartItems();
+    this.getOrderTotal();
   }
   addToCart(product) {
     var data = {
@@ -81,6 +84,24 @@ export default class App extends React.Component {
         cart: []
       }));
   }
+  getOrderTotal() {
+    var price = 0;
+
+    for (var itemNumber = 0; itemNumber < this.state.cart.length; itemNumber++) {
+      var amountForEach = this.state.cart[itemNumber]['price'] * this.state.cart[itemNumber]['count'];
+      price += amountForEach;
+
+    }
+
+    var currency = price.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+    // this.setState(
+    //   {
+    //     order: {
+    //       amount: currency
+    //     }
+    //   });
+    return currency;
+  }
   render() {
     var component;
     if (this.state.view.name === 'catalog') {
@@ -92,15 +113,17 @@ export default class App extends React.Component {
       component =
         <CartSummary currentStatus={this.state.view.name}
           viewSetter={this.setView}
-          cart={this.state.cart}/>;
+          cart={this.state.cart}
+          getOrderAmount={this.getOrderTotal} />;
     } else if (this.state.view.name === 'checkout') {
       component =
-        <CheckoutForm viewSetter={this.setView}/>;
+        <CheckoutForm viewSetter={this.setView}
+          getOrderAmount={this.getOrderTotal} />;
     } else {
       component = <ProductDetails viewSetter={this.setView}
         currentProduct={this.state.view.params}
         currentStatus={this.state.view.name}
-        addProductToCart={this.addToCart} />;
+        addProductToCart={this.addToCart}/>;
     }
     return (
       <div>

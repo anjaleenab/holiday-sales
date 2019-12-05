@@ -35,10 +35,6 @@ box-shadow: 5px 10px 30px lightgray;
   text-align: center;
 }
 
-.contShop {
-  margin-left: 65px;
-}
-
 .checkoutFormButtons {
   margin-top: 70px;
 }
@@ -101,10 +97,6 @@ box-shadow: 5px 10px 30px lightgray;
 }
 
 @media (min-width: 768px) and (max-width: 1022px) {
-  button {
-    width: 140px;
-    height:40px;
-  }
   .catalogReturn {
     margin-top: 15px;
   }
@@ -123,18 +115,20 @@ box-shadow: 5px 10px 30px lightgray;
 
 @media (max-width: 1023px) {
   .cart {
-    align-items: center;
+    text-align: center;
   }
   .cartItemInfo {
     margin: 0px;
   }
 }
 
-@media (min-width: 1023px) and (max-width: 1030px) {
-  button {
-    width: 150px;
-    height:45px;
+@media (max-width: 1425px) {
+  .input {
+    border: 1px solid black;
   }
+}
+
+@media (min-width: 1023px) and (max-width: 1030px) {
   .catalogReturn {
     margin-top: 15px;
   }
@@ -166,6 +160,10 @@ box-shadow: 5px 10px 30px lightgray;
 }
 
 @media (min-width:768px) and (max-width: 1025px){
+  button {
+    width: 150px;
+    height:60px;
+  }
   .item {
     display: flex;
     flex-direction: column;
@@ -179,6 +177,11 @@ box-shadow: 5px 10px 30px lightgray;
   .cart {
     font-size: 25px;
   }
+
+  .contShop {
+    margin-left: 65px;
+  }
+
 }
 
 @media (min-height: 812px) and (max-height: 1023px){

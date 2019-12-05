@@ -10,6 +10,7 @@ class ProductDetails extends React.Component {
   }
   addCurrentProduct(product) {
     this.props.addProductToCart(this.state.product[0]);
+    this.props.updateOrderAmount();
   }
   componentDidMount() {
     fetch(`/api/products.php?id=${this.props.currentProduct.id}`)
