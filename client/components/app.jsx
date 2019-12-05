@@ -94,12 +94,6 @@ export default class App extends React.Component {
     }
 
     var currency = price.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
-    // this.setState(
-    //   {
-    //     order: {
-    //       amount: currency
-    //     }
-    //   });
     return currency;
   }
   render() {

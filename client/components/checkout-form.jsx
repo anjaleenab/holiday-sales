@@ -43,7 +43,7 @@ export default class CheckoutForm extends React.Component {
         <div>Checkout
           <div>Order Total: {orderAmount} </div>
           <form className="ml-5 mt-2">
-            <div className="m-5" >
+            <div className="m-1" >
               <div className="form-group row">
                 <label className="col-md-4">Name</label>
                 <input
