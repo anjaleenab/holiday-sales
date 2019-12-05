@@ -30,20 +30,24 @@ export default class CheckoutForm extends React.Component {
     });
   }
   handleSubmit(event) {
-    console.log('info submitted');
-    // make this function go to confirmation page?
+    this.setState({
+      nameValue: '',
+      creditCardValue: '',
+      addressValue: ''
+    });
   }
   render() {
+    var orderAmount = this.props.getOrderAmount();
     return (
       <div className="container m-3">
         <div>Checkout
-          <div>Order Total: </div>
+          <div>Order Total: {orderAmount} </div>
           <form className="ml-5 mt-2">
-            <div className="m-5" >
+            <div className="m-1" >
               <div className="form-group row">
                 <label className="col-md-4">Name</label>
                 <input
-                  className="col-md-8"
+                  className="col-md-8 input"
                   placeholder="Name"
                   value={this.state.nameValue}
                   onChange={this.handleNameChange}/>
@@ -51,7 +55,7 @@ export default class CheckoutForm extends React.Component {
               <div className="form-group row">
                 <label className="col-md-4">Credit Card Number</label>
                 <input
-                  className="col-md-8"
+                  className="col-md-8 input"
                   placeholder="Credit Card Number"
                   value={this.state.creditCardValue}
                   onChange={this.handleCreditCardChange}/>
@@ -59,7 +63,7 @@ export default class CheckoutForm extends React.Component {
               <div className="form-group row">
                 <label className="col-md-4">Shipping Information</label>
                 <input
-                  className="col-md-8"
+                  className="col-md-8 input"
                   placeholder="Shipping Information"
                   value={this.state.addressValue}
                   onChange={this.handleAddressChange}/>
