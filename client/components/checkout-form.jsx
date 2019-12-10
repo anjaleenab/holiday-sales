@@ -39,8 +39,8 @@ export default class CheckoutForm extends React.Component {
   render() {
     var orderAmount = this.props.getOrderAmount();
     return (
-      <div className="container m-3">
-        <div>Checkout
+      <div className="container col-xl-10 m-3">
+        <div className="checkout">Checkout
           <div>Order Total: {orderAmount} </div>
           <form className="ml-5 mt-2">
             <div className="m-1" >
@@ -77,7 +77,7 @@ export default class CheckoutForm extends React.Component {
             onClick={() => this.props.viewSetter('catalog', null)}
           >Continue Shopping</button>
           <button
-            className="btn btn-dark float-right mr-1"
+            className="placeOrder btn btn-dark float-right mr-1"
             onClick={this.handleSubmit}
           >Place Order</button>
         </div>
