@@ -10,7 +10,10 @@ A mobile responsive, holiday themed full stack LAMP & React shopping cart app.
 * MySQL
 * Webpack 4
 
-## Features
+#Live Demo
+Try the application at https://holidaysales.anjaleenab.com/
+
+# Features
 
 - User can view a list of products.
 - User can view details about each product.
