@@ -81,7 +81,6 @@ export default class CheckoutForm extends React.Component {
             onClick={this.handleSubmit}
           >Place Order</button>
         </div>
-
       </div>
     );
   }
