@@ -51,6 +51,10 @@ cursor: pointer;
   width:100%;
 }
 
+.orderConf {
+font-size: 20px;
+}
+
 @media (min-width: 320px) and (max-width: 374px){
   h1 >span {
     margin-right: 5px;

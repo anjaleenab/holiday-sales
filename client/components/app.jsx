@@ -111,7 +111,7 @@ export default class App extends React.Component {
           getOrderAmount={this.getOrderTotal} />;
     } else if (this.state.view.name === 'confirmation') {
       component =
-      <OrderConfirmation />;
+        <OrderConfirmation viewSetter={this.setView}/>;
     } else {
       component = <ProductDetails viewSetter={this.setView}
         currentProduct={this.state.view.params}
