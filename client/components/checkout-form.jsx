@@ -78,7 +78,7 @@ export default class CheckoutForm extends React.Component {
           >Continue Shopping</button>
           <button
             className="placeOrder btn btn-dark float-right mr-1"
-            onClick={this.handleSubmit}
+            onClick = {() => this.props.viewSetter('confirmation', null)}
           >Place Order</button>
         </div>
       </div>
