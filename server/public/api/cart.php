@@ -24,6 +24,7 @@ switch ($method) {
     break;
   case 'DELETE':
     require('cartdelete.php');
+    break;
 }
 
 

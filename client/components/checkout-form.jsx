@@ -12,6 +12,7 @@ export default class CheckoutForm extends React.Component {
     this.handleCreditCardChange = this.handleCreditCardChange.bind(this);
     this.handleAddressChange = this.handleAddressChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.emptyCart = this.emptyCart.bind(this);
   }
   handleNameChange(event) {
     event.persist();
@@ -35,6 +36,20 @@ export default class CheckoutForm extends React.Component {
       creditCardValue: '',
       addressValue: ''
     });
+    this.emptyCart();
+  }
+  emptyCart() {
+    var bodyData = {
+      id: this.props.cartID
+    };
+    var data = {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(bodyData)
+    };
+    fetch('/api/cart.php', data);
   }
   render() {
     var orderAmount = this.props.getOrderAmount();
@@ -78,7 +93,10 @@ export default class CheckoutForm extends React.Component {
           >Continue Shopping</button>
           <button
             className="placeOrder btn btn-dark float-right mr-1"
-            onClick = {() => this.props.viewSetter('confirmation', null)}
+            onClick = {() => {
+              this.handleSubmit();
+              this.props.viewSetter('confirmation', null);
+            }}
           >Place Order</button>
         </div>
       </div>

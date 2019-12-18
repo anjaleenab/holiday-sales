@@ -6,7 +6,7 @@ if (!defined('INTERNAL')) {
 
 $cartData = getBodyData();
 
-$cartId = intval($cartData['ID']);
+$cartId = intval($cartData['id']);
 
 $deleteCartQuery = "DELETE FROM `cartItems` WHERE `cartID` = $cartId;
                      DELETE FROM `cart` WHERE `id` = $cartId";
