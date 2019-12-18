@@ -22,6 +22,9 @@ switch ($method) {
   case 'POST':
     require('cartadd.php');
     break;
+  case 'DELETE':
+    require('cartdelete.php');
+    break;
 }
 
 
