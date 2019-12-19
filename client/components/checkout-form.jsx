@@ -8,9 +8,9 @@ export default class CheckoutForm extends React.Component {
       creditCardValue: '',
       addressValue: ''
     };
-    this.nameError = null;
-    this.cardError = null;
-    this.addressError = null;
+    this.nameError = 'Each input must have a value';
+    this.cardError = 'Each input must have a value';
+    this.addressError = 'Each input must have a value';
     this.handleNameChange = this.handleNameChange.bind(this);
     this.handleCreditCardChange = this.handleCreditCardChange.bind(this);
     this.handleAddressChange = this.handleAddressChange.bind(this);
@@ -39,40 +39,50 @@ export default class CheckoutForm extends React.Component {
   handleCreditCardChange(event) {
     var creditCardNum = event.target.value;
     var lettersReg = /[A-z]/;
+    var spaceReg = /\s/;
     if (!creditCardNum) {
       this.cardError = 'Each input must have a value';
-    } else {
-      if (creditCardNum.length > 16) {
+    } else if (lettersReg.test(creditCardNum)) {
+      this.cardError = 'Credit Card input cannot have letters';
+    } else if (creditCardNum.length < 16) {
+      this.cardError = 'This input should be between 16-19 characters. Spaces are not required';
+    } else if (creditCardNum.length === 19) {
+      if (spaceReg.test(creditCardNum)) {
         if (creditCardNum[4] !== ' ' | creditCardNum[9] !== ' ' || creditCardNum[14] !== ' ') {
           this.cardError = 'If you are using spaces, the format should be as follows: 1234 5678 9012 3456. Note: Spaces are optional';
-        } else if (creditCardNum.length > 19) {
-          this.cardError = 'This input should no more than 19 characters including spaces';
-        } else if (creditCardNum.length < 16) {
-          this.cardError = 'This input should be between 16-19 characters. Spaces are not required';
         }
       }
-      if (lettersReg.test(creditCardNum));
-      this.cardError = 'Credit Card input cannot have letters';
+    } else if (creditCardNum.length > 19) {
+      this.cardError = 'This input should no more than 19 characters including spaces';
+    } else {
+      this.cardError = null;
     }
     this.setState({
-      creditCardValue: event.target.value
+      creditCardValue: creditCardNum
     });
   }
   handleAddressChange(event) {
-    var address = this.state.addressValue;
+    var address = event.target.value;
     if (!address) {
       this.addressError = 'Each input must have a value';
     } else if (address.length < 21) {
       this.addressError = 'Address input must be a minimum of 21 characters';
+    } else if (address.length >= 21) {
+      this.addressError = null;
     } else if (address.length > 156) {
       this.addressError = 'Address input must be less than 156 characters';
+    } else {
+      this.addressError = null;
     }
     this.setState({
-      addressValue: event.target.value
+      addressValue: address
     });
   }
   validateForm() {
-
+    if (!this.nameError && !this.cardError && !this.addressError) {
+      this.handleSubmit();
+      this.props.viewSetter('confirmation', null);
+    }
   }
   handleSubmit(event) {
     this.setState({
