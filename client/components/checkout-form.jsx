@@ -50,7 +50,11 @@ export default class CheckoutForm extends React.Component {
       if (spaceReg.test(creditCardNum)) {
         if (creditCardNum[4] !== ' ' | creditCardNum[9] !== ' ' || creditCardNum[14] !== ' ') {
           this.cardError = 'If you are using spaces, the format should be as follows: 1234 5678 9012 3456. Note: Spaces are optional';
+        } else {
+          this.cardError = null;
         }
+      } else {
+        this.cardError = 'The format should be as follows: 1234 5678 9012 3456.';
       }
     } else if (creditCardNum.length > 19) {
       this.cardError = 'This input should no more than 19 characters including spaces';
@@ -63,8 +67,11 @@ export default class CheckoutForm extends React.Component {
   }
   handleAddressChange(event) {
     var address = event.target.value;
+    var spaceReg = /\s/;
     if (!address) {
       this.addressError = 'Each input must have a value';
+    } else if (!spaceReg.test(address)) {
+      this.addressError = 'The format for your address should contain spaces. Please make sure your address is listed correctly';
     } else if (address.length < 21) {
       this.addressError = 'Address input must be a minimum of 21 characters';
     } else if (address.length >= 21) {
