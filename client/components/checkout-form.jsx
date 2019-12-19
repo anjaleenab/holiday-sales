@@ -166,10 +166,3 @@ export default class CheckoutForm extends React.Component {
     );
   }
 }
-
-// {
-//   () => {
-//     this.handleSubmit();
-//     this.props.viewSetter('confirmation', null);
-//   }
-// }
