@@ -23,10 +23,9 @@ switch ($method) {
     require('cartadd.php');
     break;
   case 'DELETE':
+    print_r(TRUE);
     require('cartdelete.php');
     break;
 }
-
-
 
 ?>

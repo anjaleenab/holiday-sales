@@ -100,17 +100,16 @@ export default class CheckoutForm extends React.Component {
     this.emptyCart();
   }
   emptyCart() {
-    var bodyData = {
-      id: this.props.cartID
-    };
     var data = {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify(bodyData)
+      body: JSON.stringify(this.props.cartID)
     };
     fetch('/api/cart.php', data);
+    console.log('from empty cart: ');
+    console.log(this.props.cartID);
   }
   render() {
     var orderAmount = this.props.getOrderAmount();
@@ -166,10 +165,3 @@ export default class CheckoutForm extends React.Component {
     );
   }
 }
-
-// {
-//   () => {
-//     this.handleSubmit();
-//     this.props.viewSetter('confirmation', null);
-//   }
-// }

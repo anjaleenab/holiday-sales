@@ -15,9 +15,9 @@ export default class App extends React.Component {
         params: {}
       },
       cart: [],
+      cartId: {},
       order: {}
     };
-    this.cartId = null;
     this.getOrderTotal = this.getOrderTotal.bind(this);
     this.setView = this.setView.bind(this);
     this.getCartItems = this.getCartItems.bind(this);
@@ -55,9 +55,17 @@ export default class App extends React.Component {
     };
     fetch(`/api/cart.php`, data)
       .then(response => response.json())
+      // .then(data => console.log(data));
       .then(cartID => {
-        this.cartId = cartID;
+        this.setState({
+          cartId: {
+            number: cartID + ''
+          }
+        });
       });
+    console.log('add to cart ');
+    console.log(this.state.cartId);
+    console.log(this.state.cartId.number);
   }
   getCartItems() {
     fetch('/api/cart.php')
@@ -113,7 +121,7 @@ export default class App extends React.Component {
       component =
         <CheckoutForm viewSetter={this.setView}
           getOrderAmount={this.getOrderTotal}
-          cartID={this.cartId} />
+          cartID={this.state.cartId} />
       ;
     } else if (this.state.view.name === 'confirmation') {
       component =
