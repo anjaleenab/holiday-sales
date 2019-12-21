@@ -5,6 +5,7 @@ import ProductDetails from './product-details';
 import CartSummary from './cart-summary';
 import CheckoutForm from './checkout-form';
 import OrderConfirmation from './order-confirmation';
+import Modal from './modal';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -110,6 +111,7 @@ export default class App extends React.Component {
       component =
         <div>
           <ProductList viewSetter={this.setView} />
+          <Modal />
         </div>;
     } else if (this.state.view.name === 'cart') {
       component =
