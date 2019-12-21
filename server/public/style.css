@@ -69,13 +69,23 @@ font-size: 20px;
 }
 
 .disclaimer {
-  width: 400px;
-  height: 400px;
+  width: 370px;
+  height: 370px;
   position:absolute;
   background-color:gainsboro;
   top:15%;
   right:32%;
   z-index: 1;
+  background-color: red;
+  border: 2px solid black;
+  text-align: center;
+}
+
+.disclaim {
+  width: 150px;
+  height: 150px;
+  background-color: white;
+  margin-top: 20px;
 }
 
 @media (min-width: 320px) and (max-width: 374px){

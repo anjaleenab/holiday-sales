@@ -17,13 +17,16 @@ export default class App extends React.Component {
       },
       cart: [],
       cartId: {},
-      order: {}
+      order: {},
+      seenDisclaimer: true
     };
+    // this.seenDisclaimer = true;
     this.getOrderTotal = this.getOrderTotal.bind(this);
     this.setView = this.setView.bind(this);
     this.getCartItems = this.getCartItems.bind(this);
     this.addToCart = this.addToCart.bind(this);
     this.placeItems = this.placeItems.bind(this);
+    this.verifyDisclaimer = this.verifyDisclaimer.bind(this);
   }
   setView(location, id) {
     if (id) {
@@ -105,13 +108,21 @@ export default class App extends React.Component {
     var currency = price.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
     return currency;
   }
+  verifyDisclaimer() {
+    this.setState({
+      seenDisclaimer: false
+    });
+    console.log(this.state.seenDisclaimer);
+  }
   render() {
     var component;
     if (this.state.view.name === 'catalog') {
       component =
         <div>
           <ProductList viewSetter={this.setView} />
-          <Modal />
+          {this.state.seenDisclaimer
+            ? <Modal verifyDisclaimer={this.verifyDisclaimer}/>
+            : null}
         </div>;
     } else if (this.state.view.name === 'cart') {
       component =
@@ -129,7 +140,8 @@ export default class App extends React.Component {
       component =
         <OrderConfirmation viewSetter={this.setView}/>;
     } else {
-      component = <ProductDetails viewSetter={this.setView}
+      component =
+      <ProductDetails viewSetter={this.setView}
         currentProduct={this.state.view.params}
         currentStatus={this.state.view.name}
         addProductToCart={this.addToCart}
