@@ -1,4 +1,5 @@
 import React from 'react';
+import AddToCartOptions from './cart-add-options';
 
 class ProductDetails extends React.Component {
   constructor(props) {
@@ -6,9 +7,11 @@ class ProductDetails extends React.Component {
     this.state = {
       product: null
     };
+    this.shopOptions = false;
     this.addCurrentProduct = this.addCurrentProduct.bind(this);
   }
   addCurrentProduct(product) {
+    this.shopOptions = true;
     this.props.addProductToCart(this.state.product[0]);
     this.props.updateCartProducts();
   }
@@ -46,6 +49,9 @@ class ProductDetails extends React.Component {
                 className="btn btn-dark mt-3 addBtn"
                 onClick ={this.addCurrentProduct}> Add To Cart
               </button>
+              {this.shopOptions
+                ? <AddToCartOptions viewSetter={this.props.viewSetter} />
+                : null }
             </div>
           </div>
           <div className="prodDetailsLongDesc"> {this.state.product[0].LongDescription}</div>
