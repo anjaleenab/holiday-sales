@@ -5,13 +5,10 @@ if (!defined('INTERNAL')) {
 }
 
 $cartData = getBodyData();
-print_r($cartData);
 
 $cartId = intval($cartData['number']);
 
-print($cartId);
-$deleteCartQuery = "DELETE FROM `cartItems` WHERE `cartID` = $cartId;
-                     DELETE FROM `cart` WHERE `id` = $cartId;";
+$deleteCartQuery = "DELETE FROM `cartItems` WHERE `cartID` = $cartId;";
 
 $cartDeletionResult = mysqli_query($conn, $deleteCartQuery);
 
