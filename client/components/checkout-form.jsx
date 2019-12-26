@@ -98,6 +98,7 @@ export default class CheckoutForm extends React.Component {
       addressValue: ''
     });
     this.emptyCart();
+    this.props.updateCartProducts();
   }
   emptyCart() {
     var data = {
@@ -108,8 +109,6 @@ export default class CheckoutForm extends React.Component {
       body: JSON.stringify(this.props.cartID)
     };
     fetch('/api/cart.php', data);
-    console.log('from empty cart: ');
-    console.log(this.props.cartID);
   }
   render() {
     var orderAmount = this.props.getOrderAmount();
