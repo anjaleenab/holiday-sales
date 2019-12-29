@@ -28,6 +28,8 @@ function CartSummaryItem(props) {
             <div>
               ${price}
               <br/>
+              <label>Quantity:</label>
+              <input type="text" value={props.quantity} onChange={props.quantityEdit}></input>
               Quantity: {numberOfItem}
             </div>
             <div>

@@ -18,15 +18,16 @@ export default class App extends React.Component {
       cart: [],
       cartId: {},
       order: {},
-      seenDisclaimer: true
+      seenDisclaimer: true,
+      quantity: 1
     };
-    // this.seenDisclaimer = true;
     this.getOrderTotal = this.getOrderTotal.bind(this);
     this.setView = this.setView.bind(this);
     this.getCartItems = this.getCartItems.bind(this);
     this.addToCart = this.addToCart.bind(this);
     this.placeItems = this.placeItems.bind(this);
     this.verifyDisclaimer = this.verifyDisclaimer.bind(this);
+    this.handleQuantityChange = this.handleQuantityChange.bind(this);
   }
   setView(location, id) {
     if (id) {
@@ -110,6 +111,17 @@ export default class App extends React.Component {
       seenDisclaimer: false
     });
   }
+  handleQuantityChange(event) {
+    this.setState({
+      quantity: event.target.value
+    });
+    if (event.target.value !== 1) {
+      return (
+        <div className="quantityDiv"> Testing</div>
+      );
+    }
+
+  }
   render() {
     var component;
     if (this.state.view.name === 'catalog') {
@@ -125,7 +137,9 @@ export default class App extends React.Component {
         <CartSummary currentStatus={this.state.view.name}
           viewSetter={this.setView}
           cart={this.state.cart}
-          getOrderAmount={this.getOrderTotal} />;
+          getOrderAmount={this.getOrderTotal}
+          quantityEdit={this.handleQuantityChange}
+          quantity={this.state.quantity}/>;
     } else if (this.state.view.name === 'checkout') {
       component =
         <CheckoutForm viewSetter={this.setView}
