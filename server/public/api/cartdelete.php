@@ -7,14 +7,20 @@ if (!defined('INTERNAL')) {
 $cartData = getBodyData();
 
 $cartId = intval($cartData['number']);
-
-$deleteCartQuery = "DELETE FROM `cartItems` WHERE `cartID` = $cartId;";
-
-$cartDeletionResult = mysqli_query($conn, $deleteCartQuery);
-
-if(!$cartDeletionResult) {
-  throw new Exception(mysqli_error($conn));
+$productID = intval($cartData['productID']);
+if(!$productID) {
+  $deleteCartQuery = "DELETE FROM `cartItems` WHERE `cartID` = $cartId;";
+  $cartDeletionResult = mysqli_query($conn, $deleteCartQuery);
+  if (!$cartDeletionResult) {
+    throw new Exception(mysqli_error($conn));
+  }
+} else {
+  $deleteItemQuery = "DELETE FROM `cartItems` WHERE `productID` = $productID
+                      AND `cartID` = $cartId;";
+  $deleteItemResult = mysqli_query($conn, $deleteItemQuery);
+  if (!$deleteItemResult) {
+    throw new Exception(mysqli_error($conn));
+  }
 }
-
 
 ?>
