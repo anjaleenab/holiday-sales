@@ -111,6 +111,7 @@ export default class App extends React.Component {
       body: JSON.stringify(product)
     };
     fetch('/api/cart.php', data);
+    this.getCartItems();
   }
   getOrderTotal() {
     var price = 0;
