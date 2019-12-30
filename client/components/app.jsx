@@ -28,6 +28,7 @@ export default class App extends React.Component {
     this.placeItems = this.placeItems.bind(this);
     this.verifyDisclaimer = this.verifyDisclaimer.bind(this);
     this.handleQuantityChange = this.handleQuantityChange.bind(this);
+    this.decrementQuantity = this.decrementQuantity.bind(this);
   }
   setView(location, id) {
     if (id) {
@@ -111,6 +112,10 @@ export default class App extends React.Component {
       seenDisclaimer: false
     });
   }
+  decrementQuantity(numberOfItem) {
+    numberOfItem = numberOfItem - 1;
+    return numberOfItem;
+  }
   handleQuantityChange(event) {
     this.setState({
       quantity: event.target.value
@@ -127,10 +132,13 @@ export default class App extends React.Component {
     if (this.state.view.name === 'catalog') {
       component =
         <div>
-          <ProductList viewSetter={this.setView} />
           {this.state.seenDisclaimer
-            ? <Modal verifyDisclaimer={this.verifyDisclaimer}/>
+            ? <div className="disclaimLayer">
+              <Modal verifyDisclaimer={this.verifyDisclaimer} />
+            </div>
             : null}
+          <ProductList viewSetter={this.setView} />
+
         </div>;
     } else if (this.state.view.name === 'cart') {
       component =
@@ -139,7 +147,8 @@ export default class App extends React.Component {
           cart={this.state.cart}
           getOrderAmount={this.getOrderTotal}
           quantityEdit={this.handleQuantityChange}
-          quantity={this.state.quantity}/>;
+          quantity={this.state.quantity}
+          lowerQuantity ={this.decrementQuantity}/>;
     } else if (this.state.view.name === 'checkout') {
       component =
         <CheckoutForm viewSetter={this.setView}
