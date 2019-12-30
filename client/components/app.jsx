@@ -129,9 +129,20 @@ export default class App extends React.Component {
     });
   }
 
-  decrementQuantity(numberOfItem) {
-    numberOfItem = numberOfItem - 1;
-    return numberOfItem;
+  decrementQuantity(numberOfItem, productID, cartID) {
+    var items = {
+      numberOfItem: numberOfItem,
+      productID: productID,
+      cartID: parseInt(cartID['number'])
+    };
+    var data = {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(items)
+    };
+    fetch(`/api/cart/php`, data);
   }
 
   handleQuantityChange(event) {
