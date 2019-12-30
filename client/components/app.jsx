@@ -27,6 +27,7 @@ export default class App extends React.Component {
     this.addToCart = this.addToCart.bind(this);
     this.placeItems = this.placeItems.bind(this);
     this.verifyDisclaimer = this.verifyDisclaimer.bind(this);
+    this.removeItem = this.removeItem.bind(this);
     this.handleQuantityChange = this.handleQuantityChange.bind(this);
     this.decrementQuantity = this.decrementQuantity.bind(this);
   }
@@ -97,6 +98,20 @@ export default class App extends React.Component {
         cart: []
       }));
   }
+  removeItem(productID, cartID) {
+    var product = {
+      productID: productID,
+      number: cartID
+    };
+    var data = {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(product)
+    };
+    fetch('/api/cart.php', data);
+  }
   getOrderTotal() {
     var price = 0;
     for (var itemNumber = 0; itemNumber < this.state.cart.length; itemNumber++) {
@@ -112,10 +127,12 @@ export default class App extends React.Component {
       seenDisclaimer: false
     });
   }
+
   decrementQuantity(numberOfItem) {
     numberOfItem = numberOfItem - 1;
     return numberOfItem;
   }
+
   handleQuantityChange(event) {
     this.setState({
       quantity: event.target.value
@@ -151,6 +168,8 @@ export default class App extends React.Component {
           viewSetter={this.setView}
           cart={this.state.cart}
           getOrderAmount={this.getOrderTotal}
+          removeItem ={this.removeItem}
+          cartID={this.state.cartId}
           quantityEdit={this.handleQuantityChange}
           quantity={this.state.quantity}
           lowerQuantity ={this.decrementQuantity}/>;

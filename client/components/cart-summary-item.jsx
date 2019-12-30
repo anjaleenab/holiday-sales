@@ -8,6 +8,7 @@ function CartSummaryItem(props) {
       var price = cartItem['price'];
       var shortdescription = cartItem['ShortDescription'];
       var numberOfItem = cartItem['count'];
+      var productID = cartItem['productID'];
       var style = {
         backgroundImage: 'url(' + itemImage + ')',
         width: 200 + 'px',
@@ -37,6 +38,9 @@ function CartSummaryItem(props) {
                 onClick= {() => props.decrement(numberOfItem)}>-</button>
               <button
                 className="btn btn-dark font-weight-bold">+</button>
+              <button
+                className="btn btn-dark ml-3"
+                onClick={() => props.removeItem(productID, props.cartID)}>Remove Item</button>
             </div>
             <div>
               {shortdescription}
