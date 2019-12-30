@@ -101,7 +101,7 @@ export default class App extends React.Component {
   removeItem(productID, cartID) {
     var product = {
       productID: productID,
-      number: cartID
+      number: parseInt(cartID['number'])
     };
     var data = {
       method: 'DELETE',
