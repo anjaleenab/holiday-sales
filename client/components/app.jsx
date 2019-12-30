@@ -133,9 +133,14 @@ export default class App extends React.Component {
       component =
         <div>
           {this.state.seenDisclaimer
-            ? <div className="disclaimLayer">
-              <Modal verifyDisclaimer={this.verifyDisclaimer} />
-            </div>
+            ? <React.Fragment>
+              <div className="disclaimLayer">
+                <Modal verifyDisclaimer={this.verifyDisclaimer} />
+              </div>
+              <Header
+                cart={this.state.cart}
+                viewSetter={this.setView} />
+            </React.Fragment>
             : null}
           <ProductList viewSetter={this.setView} />
 
@@ -169,9 +174,11 @@ export default class App extends React.Component {
     }
     return (
       <div>
-        <Header
-          cart={this.state.cart}
-          viewSetter={this.setView} />
+        {!this.state.seenDisclaimer
+          ? <Header
+            cart={this.state.cart}
+            viewSetter={this.setView} />
+          : null}
         {component}
       </div>
     );
