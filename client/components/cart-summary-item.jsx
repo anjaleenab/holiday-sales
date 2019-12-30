@@ -16,7 +16,9 @@ function CartSummaryItem(props) {
         backgroundRepeat: 'no-repeat',
         margin: 'auto 0px auto 10px'
       };
+
       return (
+
         <div className ="d-flex flex-row cartItem"
           key={index}>
           <div style={style}>
@@ -29,8 +31,12 @@ function CartSummaryItem(props) {
               ${price}
               <br/>
               <label>Quantity:</label>
-              <input type="text" value={props.quantity} onChange={props.quantityEdit}></input>
-              Quantity: {numberOfItem}
+              <input type="text" value={numberOfItem} onChange={props.quantityEdit}></input>
+              <button
+                className="btn btn-dark mr-3 ml-3 font-weight-bold"
+                onClick= {() => props.decrement(numberOfItem)}>-</button>
+              <button
+                className="btn btn-dark font-weight-bold">+</button>
             </div>
             <div>
               {shortdescription}
