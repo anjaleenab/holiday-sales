@@ -18,8 +18,7 @@ export default class App extends React.Component {
       cart: [],
       cartId: {},
       order: {},
-      seenDisclaimer: true,
-      quantity: 1
+      seenDisclaimer: true
     };
     this.getOrderTotal = this.getOrderTotal.bind(this);
     this.setView = this.setView.bind(this);
@@ -28,8 +27,8 @@ export default class App extends React.Component {
     this.placeItems = this.placeItems.bind(this);
     this.verifyDisclaimer = this.verifyDisclaimer.bind(this);
     this.removeItem = this.removeItem.bind(this);
-    this.handleQuantityChange = this.handleQuantityChange.bind(this);
     this.decrementQuantity = this.decrementQuantity.bind(this);
+    this.incrementQuantity = this.incrementQuantity.bind(this);
   }
   setView(location, id) {
     if (id) {
@@ -130,10 +129,31 @@ export default class App extends React.Component {
   }
 
   decrementQuantity(numberOfItem, productID, cartID) {
+    if (numberOfItem > 1) {
+      var items = {
+        numberOfItem: numberOfItem,
+        productID: productID,
+        cartID: parseInt(cartID['number']),
+        method: 'decrement'
+      };
+      var data = {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(items)
+      };
+      fetch(`/api/cart.php`, data)
+        .then(this.getCartItems());
+    }
+
+  }
+  incrementQuantity(numberOfItem, productID, cartID) {
     var items = {
       numberOfItem: numberOfItem,
       productID: productID,
-      cartID: parseInt(cartID['number'])
+      cartID: parseInt(cartID['number']),
+      method: 'increment'
     };
     var data = {
       method: 'PUT',
@@ -142,20 +162,10 @@ export default class App extends React.Component {
       },
       body: JSON.stringify(items)
     };
-    fetch(`/api/cart/php`, data);
+    fetch(`/api/cart.php`, data)
+      .then(this.getCartItems());
   }
 
-  handleQuantityChange(event) {
-    this.setState({
-      quantity: event.target.value
-    });
-    if (event.target.value !== 1) {
-      return (
-        <div className="quantityDiv"> Testing</div>
-      );
-    }
-
-  }
   render() {
     var component;
     if (this.state.view.name === 'catalog') {
@@ -182,9 +192,8 @@ export default class App extends React.Component {
           getOrderAmount={this.getOrderTotal}
           removeItem ={this.removeItem}
           cartID={this.state.cartId}
-          quantityEdit={this.handleQuantityChange}
-          quantity={this.state.quantity}
-          lowerQuantity ={this.decrementQuantity}/>;
+          lowerQuantity ={this.decrementQuantity}
+          increaseQuantity = {this.incrementQuantity}/>;
     } else if (this.state.view.name === 'checkout') {
       component =
         <CheckoutForm viewSetter={this.setView}

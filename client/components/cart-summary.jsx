@@ -16,7 +16,7 @@ function CartSummary(props) {
         {props.cart.length >= 1
           ? <CartSummaryItem cart={props.cart} removeItem={props.removeItem}
             cartID={props.cartID} quantityEdit={props.quantityEdit}
-            decrement={props.lowerQuantity} quantity={props.quantity}/>
+            decrement={props.lowerQuantity} increment={props.increaseQuantity}/>
           : <div className="emptyCart">Your shopping cart is currently empty.</div>
         }
       </div>
