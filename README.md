@@ -18,6 +18,8 @@ Try the application at https://holidaysales.anjaleenab.com/
 - User can view a list of products.
 - User can view details about each product.
 - User can add products to their cart.
+- User can remove products from their cart.
+- User can update the amount of products in their cart.
 - User can view a summary of their cart. 
 - User can check out using a form.
 
