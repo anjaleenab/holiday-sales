@@ -22,7 +22,7 @@ function CartSummaryItem(props) {
 
         <div className ="d-flex flex-row cartItem"
           key={index}>
-          <div style={style}>
+          <div className="mt-2" style={style}>
           </div>
           <div className="d-flex flex-column cartItemInfo">
             <div>
@@ -32,18 +32,21 @@ function CartSummaryItem(props) {
               ${price}
               <br/>
               Quantity: {numberOfItem}
-              <button
-                className="btn btn-dark mr-3 ml-3 font-weight-bold"
-                onClick= {() => props.decrement(numberOfItem, productID, props.cartID)}>-</button>
-              <button
-                className="btn btn-dark font-weight-bold"
-                onClick= {() => props.increment(numberOfItem, productID, props.cartID)}>+</button>
-              <button
-                className="btn btn-dark ml-3"
-                onClick={() => props.removeItem(productID, props.cartID)}>Remove Item</button>
+
             </div>
             <div>
               {shortdescription}
+            </div>
+            <div className="quantButtons">
+              <button
+                className="btn btn-dark decrement font-weight-bold"
+                onClick={() => props.decrement(numberOfItem, productID, props.cartID)}>-</button>
+              <button
+                className="btn btn-dark increment font-weight-bold"
+                onClick={() => props.increment(numberOfItem, productID, props.cartID)}>+</button>
+              <button
+                className="btn btn-dark remove"
+                onClick={() => props.removeItem(productID, props.cartID)}>Remove Item</button>
             </div>
           </div>
         </div>
