@@ -31,13 +31,13 @@ function CartSummaryItem(props) {
             <div>
               ${price}
               <br/>
-              <label>Quantity:</label>
-              <input type="text" value={numberOfItem} onChange={props.quantityEdit}></input>
+              Quantity: {numberOfItem}
               <button
                 className="btn btn-dark mr-3 ml-3 font-weight-bold"
                 onClick= {() => props.decrement(numberOfItem, productID, props.cartID)}>-</button>
               <button
-                className="btn btn-dark font-weight-bold">+</button>
+                className="btn btn-dark font-weight-bold"
+                onClick= {() => props.increment(numberOfItem, productID, props.cartID)}>+</button>
               <button
                 className="btn btn-dark ml-3"
                 onClick={() => props.removeItem(productID, props.cartID)}>Remove Item</button>
