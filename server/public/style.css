@@ -98,8 +98,33 @@ font-size: 20px;
   background-color: rgba(0, 0, 0, .5);
 }
 
-.quantityDiv {
-  background-color: darkblue;
+.decrement {
+  margin-right:5px;
+}
+
+.increment {
+  margin-left: 5px;
+}
+
+.remove {
+  margin-left: 10px;
+}
+
+.quantButtons {
+  margin: 10px 0px 2px 0px;
+}
+
+@media (max-width: 375px) {
+  .remove {
+    margin: 4px 0px;
+  }
+}
+
+@media (min-width: 410px) and (max-width: 415px) {
+  .remove {
+    margin-right: 1px;
+    margin-top: 3px;
+  }
 }
 
 @media (min-width: 320px) and (max-width: 374px){
@@ -240,13 +265,20 @@ font-size: 20px;
   .cart {
     font-size: 25px;
   }
-
+  .catalogReturn, .remove {
+    font-size: 19px;
+  }
   .contShop {
     margin-left: 65px;
   }
+  .quantButtons {
+    margin-bottom: 20px;
+  }
+  .decrement, .increment {
+    font-size: 25px;
+  }
 
 }
-
 
 @media (min-width:1914px) {
 
