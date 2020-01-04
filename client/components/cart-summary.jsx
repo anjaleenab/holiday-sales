@@ -15,8 +15,7 @@ function CartSummary(props) {
       <div className="d-flex flex-column m-4 cart">Shopping Cart
         {props.cart.length >= 1
           ? <CartSummaryItem cart={props.cart} removeItem={props.removeItem}
-            cartID={props.cartID} quantityEdit={props.quantityEdit}
-            decrement={props.lowerQuantity} increment={props.increaseQuantity}/>
+            cartID={props.cartID} decrement={props.lowerQuantity} increment={props.increaseQuantity}/>
           : <div className="emptyCart">Your shopping cart is currently empty.</div>
         }
       </div>

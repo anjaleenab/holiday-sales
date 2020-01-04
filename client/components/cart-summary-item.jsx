@@ -32,7 +32,6 @@ function CartSummaryItem(props) {
               ${price}
               <br/>
               Quantity: {numberOfItem}
-
             </div>
             <div>
               {shortdescription}
@@ -40,7 +39,13 @@ function CartSummaryItem(props) {
             <div className="quantButtons">
               <button
                 className="btn btn-dark decrement font-weight-bold"
-                onClick={() => props.decrement(numberOfItem, productID, props.cartID)}>-</button>
+                onClick={() => {
+                  if (numberOfItem > 1) {
+                    props.decrement(numberOfItem, productID, props.cartID);
+                  } else {
+                    alert('Please use the Remove Item button for quantities less than 2.');
+                  }
+                }}>-</button>
               <button
                 className="btn btn-dark increment font-weight-bold"
                 onClick={() => props.increment(numberOfItem, productID, props.cartID)}>+</button>
