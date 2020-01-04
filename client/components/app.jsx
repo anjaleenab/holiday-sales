@@ -129,23 +129,21 @@ export default class App extends React.Component {
   }
 
   decrementQuantity(numberOfItem, productID, cartID) {
-    if (numberOfItem > 1) {
-      var items = {
-        numberOfItem: numberOfItem,
-        productID: productID,
-        cartID: parseInt(cartID['number']),
-        method: 'decrement'
-      };
-      var data = {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(items)
-      };
-      fetch(`/api/cart.php`, data)
-        .then(this.getCartItems());
-    }
+    var items = {
+      numberOfItem: numberOfItem,
+      productID: productID,
+      cartID: parseInt(cartID['number']),
+      method: 'decrement'
+    };
+    var data = {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(items)
+    };
+    fetch(`/api/cart.php`, data)
+      .then(this.getCartItems());
 
   }
   incrementQuantity(numberOfItem, productID, cartID) {
