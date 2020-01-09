@@ -3,7 +3,7 @@
   grid-template-columns: 400px 400px 400px;
 }
 
-h1 > span {
+.cartIcon {
   float: right;
   margin-right: 15px;
 }
@@ -26,15 +26,22 @@ h1 > span {
   padding: 15px 0px 20px 0px;
 }
 
-.cartIcon {
-  padding: 10px;
-  border-radius: 20%;
+.item {
+  border-radius: 10%;
 }
 
-.cartIcon:hover, .item:hover, button:hover{
+.item:hover, button:hover{
   transform: scale(1.1);
   box-shadow: 5px 10px 30px lightgray;
   cursor: pointer;
+}
+
+.cartIcon:hover {
+  transform: scale(1.1);
+  box-shadow: 5px 10px 30px lightgray;
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 20%;
 }
 
 .itemTotal {
