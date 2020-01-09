@@ -19,13 +19,22 @@ h1 > span {
 }
 
 .prodDetailsLongDesc {
-margin: 60px 15px 0px 15px;
+  margin: 60px 15px 0px 15px;
+}
+
+.mainDiv {
+  padding: 15px 0px 20px 0px;
+}
+
+.cartIcon {
+  padding: 10px;
+  border-radius: 20%;
 }
 
 .cartIcon:hover, .item:hover, button:hover{
-transform: scale(1.1);
-box-shadow: 5px 10px 30px lightgray;
-cursor: pointer;
+  transform: scale(1.1);
+  box-shadow: 5px 10px 30px lightgray;
+  cursor: pointer;
 }
 
 .itemTotal {

@@ -168,7 +168,7 @@ export default class App extends React.Component {
     var component;
     if (this.state.view.name === 'catalog') {
       component =
-        <div>
+        <div className="mainDiv">
           {this.state.seenDisclaimer
             ? <React.Fragment>
               <div className="disclaimLayer">
