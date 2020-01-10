@@ -52,14 +52,16 @@ function CartSummaryItem(props) {
                 onClick={() => props.increment(numberOfItem, productID, props.cartID)}>+</button>
               <button
                 className="btn btn-dark remove"
-                onClick={() => props.removalConf()}>Remove Item
+                onClick={() => props.removalConf(productID)}
+              >Remove Item
               </button>
             </div>
             {
               props.removal
                 ? <RemovalConf
                   removal={props.removal}
-                  removeItem={this.removeItem}
+                  removeItem={props.removeItem}
+                  productName={name}
                   productID={productID}
                   cartID={props.cartID} />
                 : null

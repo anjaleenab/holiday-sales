@@ -18,9 +18,12 @@ export default class App extends React.Component {
       cart: [],
       cartId: {},
       order: {},
-      seenDisclaimer: true
+      seenDisclaimer: true,
+      removalObj: {
+        removal: false,
+        productID: null
+      }
     };
-    this.removal = false;
     this.getOrderTotal = this.getOrderTotal.bind(this);
     this.setView = this.setView.bind(this);
     this.getCartItems = this.getCartItems.bind(this);
@@ -114,9 +117,16 @@ export default class App extends React.Component {
     fetch('/api/cart.php', data);
     this.getCartItems();
   }
-  confirmRemoval() {
-    this.removal = true;
+
+  confirmRemoval(productID) {
+    this.setState({
+      removalObj: {
+        removal: true,
+        productID: productID
+      }
+    });
   }
+
   getOrderTotal() {
     var price = 0;
     for (var itemNumber = 0; itemNumber < this.state.cart.length; itemNumber++) {
@@ -127,6 +137,7 @@ export default class App extends React.Component {
     var currency = price.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
     return currency;
   }
+
   verifyDisclaimer() {
     this.setState({
       seenDisclaimer: false
@@ -194,7 +205,7 @@ export default class App extends React.Component {
           cart={this.state.cart}
           getOrderAmount={this.getOrderTotal}
           removeItem ={this.removeItem}
-          removal = {this.removal}
+          removal = {this.state.removalObj}
           removalConf = {this.confirmRemoval}
           cartID={this.state.cartId}
           lowerQuantity ={this.decrementQuantity}
