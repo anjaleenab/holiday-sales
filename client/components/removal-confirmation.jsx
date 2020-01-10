@@ -5,7 +5,7 @@ function RemovalConf(props) {
     return (
       <div className="removalConf"> Are you sure you would like to remove each {props.productName} from your cart?
         <button
-          className="btn btn-dark remove"
+          className="btn btn-dark finalRemoval"
           onClick={() => props.removeItem(props.productID, props.cartID)}>Remove
         </button>
       </div>
