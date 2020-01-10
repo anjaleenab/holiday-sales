@@ -22,8 +22,11 @@ export default class CheckoutForm extends React.Component {
     event.persist();
     var name = event.target.value;
     var numbersReg = /\d/;
+    var spaceReg = /\s/;
     if (!name) {
       this.nameError = 'Each input must have a value';
+    } else if (spaceReg.test(name)) {
+      this.nameError = 'Name input cannot have spaces';
     } else if (name.length > 65) {
       this.nameError = 'Value for full name must be less than 65 characters';
     } else if (numbersReg.test(name)) {

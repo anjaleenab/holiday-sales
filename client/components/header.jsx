@@ -6,8 +6,8 @@ function Header(props) {
     count += props.cart[itemNumber]['count'];
   }
   return (
-    <header style={{ marginLeft: '10px' }}>
-      <h1 onClick={() => props.viewSetter('catalog', null)}>Holiday Sales
+    <header style={{ marginLeft: '10px', paddingTop: '7px' }}>
+      <h1 >Holiday Sales
         <span className="cartIcon">{count}
           <i onClick={() => props.viewSetter('cart', null)}
             className="fa fa-shopping-cart"></i>
@@ -19,3 +19,4 @@ function Header(props) {
 }
 
 export default Header;
+// onClick = {() => props.viewSetter('catalog', null)}
