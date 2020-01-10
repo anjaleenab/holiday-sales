@@ -20,6 +20,7 @@ export default class App extends React.Component {
       order: {},
       seenDisclaimer: true
     };
+    this.removal = false;
     this.getOrderTotal = this.getOrderTotal.bind(this);
     this.setView = this.setView.bind(this);
     this.getCartItems = this.getCartItems.bind(this);
@@ -112,6 +113,9 @@ export default class App extends React.Component {
     fetch('/api/cart.php', data);
     this.getCartItems();
   }
+  confirmRemoval() {
+    this.removal = true;
+  }
   getOrderTotal() {
     var price = 0;
     for (var itemNumber = 0; itemNumber < this.state.cart.length; itemNumber++) {
@@ -189,6 +193,7 @@ export default class App extends React.Component {
           cart={this.state.cart}
           getOrderAmount={this.getOrderTotal}
           removeItem ={this.removeItem}
+          removalConf = {this.removal}
           cartID={this.state.cartId}
           lowerQuantity ={this.decrementQuantity}
           increaseQuantity = {this.incrementQuantity}/>;
