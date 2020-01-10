@@ -28,6 +28,7 @@ export default class App extends React.Component {
     this.placeItems = this.placeItems.bind(this);
     this.verifyDisclaimer = this.verifyDisclaimer.bind(this);
     this.removeItem = this.removeItem.bind(this);
+    this.confirmRemoval = this.confirmRemoval.bind(this);
     this.decrementQuantity = this.decrementQuantity.bind(this);
     this.incrementQuantity = this.incrementQuantity.bind(this);
   }
@@ -193,7 +194,7 @@ export default class App extends React.Component {
           cart={this.state.cart}
           getOrderAmount={this.getOrderTotal}
           removeItem ={this.removeItem}
-          removalConf = {this.removal}
+          removalConf = {this.confirmRemoval}
           cartID={this.state.cartId}
           lowerQuantity ={this.decrementQuantity}
           increaseQuantity = {this.incrementQuantity}/>;
