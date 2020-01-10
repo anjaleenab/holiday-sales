@@ -194,10 +194,12 @@ export default class App extends React.Component {
           cart={this.state.cart}
           getOrderAmount={this.getOrderTotal}
           removeItem ={this.removeItem}
+          removal = {this.removal}
           removalConf = {this.confirmRemoval}
           cartID={this.state.cartId}
           lowerQuantity ={this.decrementQuantity}
           increaseQuantity = {this.incrementQuantity}/>;
+
     } else if (this.state.view.name === 'checkout') {
       component =
         <CheckoutForm viewSetter={this.setView}

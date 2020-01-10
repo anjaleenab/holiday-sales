@@ -1,4 +1,5 @@
 import React from 'react';
+import RemovalConf from './removal-confirmation';
 
 function CartSummaryItem(props) {
   return (
@@ -51,11 +52,19 @@ function CartSummaryItem(props) {
                 onClick={() => props.increment(numberOfItem, productID, props.cartID)}>+</button>
               <button
                 className="btn btn-dark remove"
-                onClick={() => {
-                  props.removeItem(productID, props.cartID);
-                  props.removalConf();
-                }}>Remove Item</button>
+                onClick={() => props.removalConf()}>Remove Item
+              </button>
             </div>
+            {
+              props.removal
+                ? <RemovalConf
+                  removal={props.removal}
+                  removeItem={this.removeItem}
+                  productID={productID}
+                  cartID={props.cartID} />
+                : null
+            }
+
           </div>
         </div>
       );

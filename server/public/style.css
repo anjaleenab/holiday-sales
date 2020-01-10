@@ -126,6 +126,10 @@ font-size: 20px;
   margin-left: 10px;
 }
 
+.removalConf {
+  background-color: pink;
+}
+
 .quantButtons {
   margin: 10px 0px 2px 0px;
 }
