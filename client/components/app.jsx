@@ -18,7 +18,11 @@ export default class App extends React.Component {
       cart: [],
       cartId: {},
       order: {},
-      seenDisclaimer: true
+      seenDisclaimer: true,
+      removalObj: {
+        removal: false,
+        productID: null
+      }
     };
     this.getOrderTotal = this.getOrderTotal.bind(this);
     this.setView = this.setView.bind(this);
@@ -27,6 +31,7 @@ export default class App extends React.Component {
     this.placeItems = this.placeItems.bind(this);
     this.verifyDisclaimer = this.verifyDisclaimer.bind(this);
     this.removeItem = this.removeItem.bind(this);
+    this.confirmRemoval = this.confirmRemoval.bind(this);
     this.decrementQuantity = this.decrementQuantity.bind(this);
     this.incrementQuantity = this.incrementQuantity.bind(this);
   }
@@ -112,6 +117,16 @@ export default class App extends React.Component {
     fetch('/api/cart.php', data);
     this.getCartItems();
   }
+
+  confirmRemoval(productID) {
+    this.setState({
+      removalObj: {
+        removal: true,
+        productID: productID
+      }
+    });
+  }
+
   getOrderTotal() {
     var price = 0;
     for (var itemNumber = 0; itemNumber < this.state.cart.length; itemNumber++) {
@@ -122,6 +137,7 @@ export default class App extends React.Component {
     var currency = price.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
     return currency;
   }
+
   verifyDisclaimer() {
     this.setState({
       seenDisclaimer: false
@@ -189,9 +205,12 @@ export default class App extends React.Component {
           cart={this.state.cart}
           getOrderAmount={this.getOrderTotal}
           removeItem ={this.removeItem}
+          removal = {this.state.removalObj}
+          removalConf = {this.confirmRemoval}
           cartID={this.state.cartId}
           lowerQuantity ={this.decrementQuantity}
           increaseQuantity = {this.incrementQuantity}/>;
+
     } else if (this.state.view.name === 'checkout') {
       component =
         <CheckoutForm viewSetter={this.setView}
