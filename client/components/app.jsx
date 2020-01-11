@@ -116,12 +116,17 @@ export default class App extends React.Component {
     };
     fetch('/api/cart.php', data);
     this.getCartItems();
-  }
-
-  confirmRemoval(productID) {
     this.setState({
       removalObj: {
-        removal: true,
+        removal: false
+      }
+    });
+  }
+
+  confirmRemoval(modalSignal, productID) {
+    this.setState({
+      removalObj: {
+        removal: modalSignal,
         productID: productID
       }
     });
