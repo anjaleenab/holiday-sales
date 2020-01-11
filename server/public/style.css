@@ -138,13 +138,28 @@ font-size: 20px;
   color: red;
   font-weight: bold;
   font-size: x-large;
-  padding-top: 110px;
+  padding-top: 50px;
   text-align: center;
+}
+
+.removalButtons {
+  position: relative;
+  margin-top: 40px;
+  left: 7px;
 }
 
 .finalRemoval {
 width: 150px;
+height:55px;
 font-size: 25px;
+position: relative;
+right: 20px;
+}
+
+.declineRemoval {
+width: 150px;
+height: 55px;
+font-size: 17px;
 }
 
 .quantButtons {
