@@ -132,9 +132,10 @@ font-size: 20px;
   transform: translate(-50%, -50%);
   position:absolute;
   background-color: whitesmoke;
-  border-radius: 20%;
+  border-radius: 10%;
+  border: 1px solid red;
   width: 400px;
-  height: 400px;
+  height: 330px;
   color: red;
   font-weight: bold;
   font-size: x-large;
@@ -166,9 +167,25 @@ font-size: 17px;
   margin: 10px 0px 2px 0px;
 }
 
+@media (max-width: 321px) {
+  .removalConf {
+    width: 300px;
+  }
+  .disclaimer {
+    width: 315px;
+  }
+}
+
 @media (max-width: 375px) {
   .remove {
     margin: 4px 0px;
+  }
+  .removalButtons {
+    margin-top: 0px;
+  }
+  .finalRemoval, .declineRemoval {
+    width: 120px;
+    height: 75px;
   }
 }
 
@@ -209,6 +226,15 @@ font-size: 17px;
 @media (min-width: 360px) and (max-width: 410px) {
   .itemTotal {
     margin-right: 115px;
+  }
+  .removalConf {
+    width: 350px;
+  }
+  .removalButtons {
+    left: 8px;
+  }
+  .disclaimer {
+    width: 330px;
   }
 }
 
