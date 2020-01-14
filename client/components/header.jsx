@@ -7,7 +7,8 @@ function Header(props) {
   }
   return (
     <header style={{ marginLeft: '10px', paddingTop: '7px' }}>
-      <h1 >Holiday Sales
+      <h1>
+        <span onClick={() => props.viewSetter('catalog', null)}>Holiday Sales</span>
         <span className="cartIcon">{count}
           <i onClick={() => props.viewSetter('cart', null)}
             className="fa fa-shopping-cart"></i>
@@ -19,4 +20,3 @@ function Header(props) {
 }
 
 export default Header;
-// onClick = {() => props.viewSetter('catalog', null)}
