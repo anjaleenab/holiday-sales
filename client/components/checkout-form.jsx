@@ -43,9 +43,13 @@ export default class CheckoutForm extends React.Component {
 
     var creditCardNum = event.target.value;
     var lettersReg = /[A-z]/;
+    var nan = /[-~+!@#$%^&*(),.?":{}|<>;'=/A-z]/;
     var spaceReg = /\s/;
 
     creditCardNum = creditCardNum.trim();
+    if (nan.test(creditCardNum)) {
+      creditCardNum = creditCardNum.substring(0, creditCardNum.length - 1);
+    }
     if (creditCardNum[3] && creditCardNum.length === 4) {
       creditCardNum = creditCardNum.padEnd(5);
     }
@@ -58,6 +62,16 @@ export default class CheckoutForm extends React.Component {
     if (creditCardNum.length > 19) {
       creditCardNum = creditCardNum.substring(0, 19);
     }
+
+    // if (lettersReg.test(creditCardNum[creditCardNum.indexOf(' ') + 1]) && creditCardNum.indexOf(' ') !== 5 && creditCardNum.indexOf(' ') !== 10 &&
+    //   creditCardNum.indexOf(' ') !== 15) {
+    //   console.log(event.target.value[event.target.value.length - 1]);
+    //   creditCardNum = creditCardNum.substring(0, creditCardNum.length - 1);
+    //   console.log(creditCardNum);
+    // }
+
+    // control for spaces being in other places
+    // control for person typing letters
 
     if (!creditCardNum) {
       this.cardError = 'Each input must have a value';
