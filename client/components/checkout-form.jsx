@@ -21,8 +21,13 @@ export default class CheckoutForm extends React.Component {
   handleNameChange(event) {
     event.persist();
     var name = event.target.value;
+    var notLetter = /[\\+~!@#$%^&*()_[/,.?":{}|<>;='`/0-9[\][-]/;
     var numbersReg = /\d/;
     var spaceReg = /\s/;
+    if (notLetter.test(name)) {
+      name = name.substring(0, name.length - 1);
+    }
+
     if (!name) {
       this.nameError = 'Each input must have a value';
     } else if (spaceReg.test(name)) {
@@ -40,12 +45,12 @@ export default class CheckoutForm extends React.Component {
 
   }
   handleCreditCardChange(event) {
-
     var creditCardNum = event.target.value;
-    var lettersReg = /[A-z]/;
-    var spaceReg = /\s/;
-
+    var nan = /[-~+!@#$%^&*(),.?":{}|<>;'=/A-z]/;
     creditCardNum = creditCardNum.trim();
+    if (nan.test(creditCardNum)) {
+      creditCardNum = creditCardNum.substring(0, creditCardNum.length - 1);
+    }
     if (creditCardNum[3] && creditCardNum.length === 4) {
       creditCardNum = creditCardNum.padEnd(5);
     }
@@ -61,24 +66,8 @@ export default class CheckoutForm extends React.Component {
 
     if (!creditCardNum) {
       this.cardError = 'Each input must have a value';
-    } else if (lettersReg.test(creditCardNum)) {
-      this.cardError = 'Credit Card input cannot have letters';
     } else if (creditCardNum.length < 16) {
-      this.cardError = 'This input should be between 16-19 characters. Spaces are not required';
-    } else if (creditCardNum.length === 19) {
-
-      if (spaceReg.test(creditCardNum)) {
-        if (creditCardNum[4] !== ' ' | creditCardNum[9] !== ' ' || creditCardNum[14] !== ' ') {
-          this.cardError = 'If you are using spaces, the format should be as follows: 1234 5678 9012 3456. Note: Spaces are optional';
-        } else {
-          this.cardError = null;
-        }
-      } else {
-        this.cardError = 'The format should be as follows: 1234 5678 9012 3456.';
-      }
-    } else if (creditCardNum.length > 19) {
-
-      this.cardError = 'This input should no more than 19 characters including spaces';
+      this.cardError = 'This input should be 16 characters. Spaces will be input automatically';
     } else {
       this.cardError = null;
     }
