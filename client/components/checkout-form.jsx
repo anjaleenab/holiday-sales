@@ -40,9 +40,22 @@ export default class CheckoutForm extends React.Component {
 
   }
   handleCreditCardChange(event) {
+
     var creditCardNum = event.target.value;
     var lettersReg = /[A-z]/;
     var spaceReg = /\s/;
+
+    creditCardNum = creditCardNum.trim();
+    if (creditCardNum[3] && creditCardNum.length === 4) {
+      creditCardNum = creditCardNum.padEnd(5);
+    }
+    if (creditCardNum[8] && creditCardNum.length === 9) {
+      creditCardNum = creditCardNum.padEnd(10);
+    }
+    if (creditCardNum[13] && creditCardNum.length === 14) {
+      creditCardNum = creditCardNum.padEnd(15);
+    }
+
     if (!creditCardNum) {
       this.cardError = 'Each input must have a value';
     } else if (lettersReg.test(creditCardNum)) {
