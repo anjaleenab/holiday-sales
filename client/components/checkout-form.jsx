@@ -21,8 +21,13 @@ export default class CheckoutForm extends React.Component {
   handleNameChange(event) {
     event.persist();
     var name = event.target.value;
+    var notLetter = /[\\+~!@#$%^&*()_[/,.?":{}|<>;='`/0-9[\][-]/;
     var numbersReg = /\d/;
     var spaceReg = /\s/;
+    if (notLetter.test(name)) {
+      name = name.substring(0, name.length - 1);
+    }
+
     if (!name) {
       this.nameError = 'Each input must have a value';
     } else if (spaceReg.test(name)) {
