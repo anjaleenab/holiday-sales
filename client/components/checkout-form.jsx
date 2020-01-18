@@ -55,6 +55,9 @@ export default class CheckoutForm extends React.Component {
     if (creditCardNum[13] && creditCardNum.length === 14) {
       creditCardNum = creditCardNum.padEnd(15);
     }
+    if (creditCardNum.length > 19) {
+      creditCardNum = creditCardNum.substring(0, 19);
+    }
 
     if (!creditCardNum) {
       this.cardError = 'Each input must have a value';
@@ -63,6 +66,7 @@ export default class CheckoutForm extends React.Component {
     } else if (creditCardNum.length < 16) {
       this.cardError = 'This input should be between 16-19 characters. Spaces are not required';
     } else if (creditCardNum.length === 19) {
+
       if (spaceReg.test(creditCardNum)) {
         if (creditCardNum[4] !== ' ' | creditCardNum[9] !== ' ' || creditCardNum[14] !== ' ') {
           this.cardError = 'If you are using spaces, the format should be as follows: 1234 5678 9012 3456. Note: Spaces are optional';
@@ -73,6 +77,7 @@ export default class CheckoutForm extends React.Component {
         this.cardError = 'The format should be as follows: 1234 5678 9012 3456.';
       }
     } else if (creditCardNum.length > 19) {
+
       this.cardError = 'This input should no more than 19 characters including spaces';
     } else {
       this.cardError = null;
