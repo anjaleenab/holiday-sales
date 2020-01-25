@@ -88,12 +88,12 @@ font-size: 20px;
   width: 370px;
   height: 370px;
   position:absolute;
-  background-color:gainsboro;
+  padding: .3em;
   top:50%;
   left:50%;
   transform: translate(-50%, -50%);
   z-index: 1;
-  background-color: red;
+  background-color: lawngreen;
   border: 2px solid black;
   text-align: center;
 }
@@ -108,6 +108,7 @@ font-size: 20px;
 .disclaimLayer {
   display: block;
   position: fixed;
+  top: 0;
   width:100%;
   height:100%;
   z-index: 1;
@@ -139,7 +140,7 @@ font-size: 20px;
   color: red;
   font-weight: bold;
   font-size: x-large;
-  padding-top: 50px;
+  padding: 50px .5em 2.5em .5em;
   text-align: center;
 }
 
@@ -179,9 +180,6 @@ font-size: 17px;
 @media (max-width: 375px) {
   .remove {
     margin: 4px 0px;
-  }
-  .removalButtons {
-    margin-top: 0px;
   }
   .finalRemoval, .declineRemoval {
     width: 120px;
