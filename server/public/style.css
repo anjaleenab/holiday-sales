@@ -199,7 +199,7 @@ font-size: 17px;
 }
 
 @media (min-width: 320px) and (max-width: 374px){
-  h1 >span {
+  .cartIcon {
     margin-right: 5px;
   }
 }
@@ -277,6 +277,10 @@ font-size: 17px;
   }
   .opt2 {
     margin-right: 20px;
+  }
+   .product {
+    display: flex;
+    flex-direction: column;
   }
 }
 
