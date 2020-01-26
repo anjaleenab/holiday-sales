@@ -120,10 +120,10 @@ export default class CheckoutForm extends React.Component {
   render() {
     var orderAmount = this.props.getOrderAmount();
     return (
-      <div className="container col-xl-10 m-3">
+      <div className="container col-xl-10">
         <div className="checkout">Checkout
           <div>Order Total: {orderAmount} </div>
-          <form className="ml-5 mt-2">
+          <form className="ml-3 mt-2">
             <div className="m-1" >
               <div className="form-group row">
                 <label className="col-md-4">Name</label>
