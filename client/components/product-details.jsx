@@ -25,7 +25,7 @@ class ProductDetails extends React.Component {
     if (this.state.product) {
       var style = {
         backgroundImage: 'url(' + this.state.product[0].Image[0] + ')',
-        width: 400 + 'px',
+        width: 10 + 'em',
         height: 220 + 'px',
         backgroundSize: 'contain',
         backgroundRepeat: 'no-repeat'
