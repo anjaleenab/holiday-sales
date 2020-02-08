@@ -66,7 +66,6 @@ export default class App extends React.Component {
     };
     fetch(`/api/cart.php`, data)
       .then(response => response.json())
-      // .then(data => console.log(data));
       .then(cartID => {
         this.setState({
           cartId: {
@@ -163,8 +162,16 @@ export default class App extends React.Component {
       },
       body: JSON.stringify(items)
     };
-    fetch(`/api/cart.php`, data)
-      .then(this.getCartItems());
+    fetch(`/api/cart.php`, data);
+    var copyOfProducts = Object.assign(this.state.cart);
+    for (var productInCart = 0; productInCart < copyOfProducts.length; productInCart++) {
+      if (copyOfProducts[productInCart]['productID'] === productID) {
+        copyOfProducts[productInCart]['count']--;
+      }
+    }
+    this.setState({
+      cart: copyOfProducts
+    });
 
   }
   incrementQuantity(numberOfItem, productID, cartID) {
@@ -181,8 +188,16 @@ export default class App extends React.Component {
       },
       body: JSON.stringify(items)
     };
-    fetch(`/api/cart.php`, data)
-      .then(this.getCartItems());
+    fetch(`/api/cart.php`, data);
+    var copyOfProducts = Object.assign(this.state.cart);
+    for (var productInCart = 0; productInCart < copyOfProducts.length; productInCart++) {
+      if (copyOfProducts[productInCart]['productID'] === productID) {
+        copyOfProducts[productInCart]['count']++;
+      }
+    }
+    this.setState({
+      cart: copyOfProducts
+    });
   }
 
   render() {
